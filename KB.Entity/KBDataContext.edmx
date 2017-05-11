@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“KB.dbo.t_KB_Article”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="t_KB_Article">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Body" />
+            <PropertyRef Name="CustomURL" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="IfFeatured" />
+            <PropertyRef Name="CreatedTime" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CustomURL" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="IfFeatured" Type="bit" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedTime" Type="datetime" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="2048" Nullable="false" />
+          <Property Name="Views" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="Index" Type="int" />
+        </EntityType>
+        <EntityContainer Name="KBModelStoreContainer">
+          <EntitySet Name="t_KB_Article" EntityType="Self.t_KB_Article" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [t_KB_Article].[Id] AS [Id], 
+    [t_KB_Article].[Body] AS [Body], 
+    [t_KB_Article].[CustomURL] AS [CustomURL], 
+    [t_KB_Article].[CategoryId] AS [CategoryId], 
+    [t_KB_Article].[IfFeatured] AS [IfFeatured], 
+    [t_KB_Article].[CreatedTime] AS [CreatedTime], 
+    [t_KB_Article].[CreatedBy] AS [CreatedBy], 
+    [t_KB_Article].[ModifiedBy] AS [ModifiedBy], 
+    [t_KB_Article].[ModifiedTime] AS [ModifiedTime], 
+    [t_KB_Article].[Status] AS [Status], 
+    [t_KB_Article].[Title] AS [Title], 
+    [t_KB_Article].[Views] AS [Views], 
+    [t_KB_Article].[Name] AS [Name], 
+    [t_KB_Article].[Index] AS [Index]
+    FROM [dbo].[t_KB_Article] AS [t_KB_Article]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="t_KB_Article">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Body" />
+            <PropertyRef Name="CustomURL" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="IfFeatured" />
+            <PropertyRef Name="CreatedTime" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomURL" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="IfFeatured" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedTime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Views" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Index" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="KBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_KB_Article" EntityType="Self.t_KB_Article" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KBModelStoreContainer" CdmEntityContainer="KBEntities">
+          <EntitySetMapping Name="t_KB_Article">
+            <EntityTypeMapping TypeName="KBModel.t_KB_Article">
+              <MappingFragment StoreEntitySet="t_KB_Article">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="CustomURL" ColumnName="CustomURL" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="IfFeatured" ColumnName="IfFeatured" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedTime" ColumnName="ModifiedTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
