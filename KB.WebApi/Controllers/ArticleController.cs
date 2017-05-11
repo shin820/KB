@@ -1,63 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+﻿using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using KB.Entity;
+using KB.Service.AppServices;
 
 namespace KB.WebApi.Controllers
 {
     public class ArticleController : ApiController
     {
-        private KBEntities db = new KBEntities();
+        private IArticleAppService _articleAppService;
+
+        public ArticleController(IArticleAppService articleAppService)
+        {
+            _articleAppService = articleAppService;
+        }
 
         // GET: api/Article
-        public IQueryable<t_KB_Article> Gett_KB_Article()
+        public IQueryable<t_KB_Article> GetArticle()
         {
-            return db.t_KB_Article;
+            return _articleAppService.FindAll();
         }
 
         // GET: api/Article/5
         [ResponseType(typeof(t_KB_Article))]
-        public IHttpActionResult Gett_KB_Article(int id)
+        public IHttpActionResult GetArticle(int id)
         {
-            t_KB_Article t_KB_Article = db.t_KB_Article.Find(id);
-            if (t_KB_Article == null)
+            t_KB_Article article = _articleAppService.Find(id);
+            if (article == null)
             {
                 return NotFound();
             }
 
-            return Ok(t_KB_Article);
+            return Ok(article);
         }
 
         // PUT: api/Article/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult Putt_KB_Article(int id, t_KB_Article t_KB_Article)
+        public IHttpActionResult PutArticle(int id, t_KB_Article article)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != t_KB_Article.Id)
+            if (id != article.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(t_KB_Article).State = EntityState.Modified;
-
             try
             {
-                db.SaveChanges();
+                _articleAppService.Update(article);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!t_KB_ArticleExists(id))
+                if (_articleAppService.Find(id) == null)
                 {
                     return NotFound();
                 }
@@ -72,47 +71,31 @@ namespace KB.WebApi.Controllers
 
         // POST: api/Article
         [ResponseType(typeof(t_KB_Article))]
-        public IHttpActionResult Postt_KB_Article(t_KB_Article t_KB_Article)
+        public IHttpActionResult PostArticle(t_KB_Article article)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.t_KB_Article.Add(t_KB_Article);
-            db.SaveChanges();
+            _articleAppService.Insert(article);
 
-            return CreatedAtRoute("DefaultApi", new { id = t_KB_Article.Id }, t_KB_Article);
+            return CreatedAtRoute("DefaultApi", new { id = article.Id }, article);
         }
 
         // DELETE: api/Article/5
         [ResponseType(typeof(t_KB_Article))]
-        public IHttpActionResult Deletet_KB_Article(int id)
+        public IHttpActionResult DeleteArticle(int id)
         {
-            t_KB_Article t_KB_Article = db.t_KB_Article.Find(id);
-            if (t_KB_Article == null)
+            t_KB_Article article = _articleAppService.Find(id);
+            if (article == null)
             {
                 return NotFound();
             }
 
-            db.t_KB_Article.Remove(t_KB_Article);
-            db.SaveChanges();
+            _articleAppService.Delete(article);
 
-            return Ok(t_KB_Article);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool t_KB_ArticleExists(int id)
-        {
-            return db.t_KB_Article.Count(e => e.Id == id) > 0;
+            return Ok(article);
         }
     }
 }

@@ -15,8 +15,8 @@ namespace KB.Repository
     {
         protected override void Init()
         {
-            Kernel.Register(Component.For<KBEntities>()
-                                     .ImplementedBy<KBEntities>()
+            Kernel.Register(Component.For<KBDataContext>()
+                                     .ImplementedBy<KBDataContext>()
                                      .LifestylePerWebRequest(),
                             Component.For(typeof(IRepositoryBase<>))
                                      .ImplementedBy(typeof(RepositoryBase<>))

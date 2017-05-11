@@ -49,51 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KBDataContext.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KBDataContext.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="KBDataContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KBDataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="KBDataContext.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KBDataContext.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="KBDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="t_KB_Article.cs">
-      <DependentUpon>KBDataContext.tt</DependentUpon>
-    </Compile>
+    <Compile Include="t_KB_Article.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <EntityDeploy Include="KBDataContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>KBDataContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="KBDataContext.edmx.diagram">
-      <DependentUpon>KBDataContext.edmx</DependentUpon>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="KBDataContext.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>KBDataContext.Context.cs</LastGenOutput>
-      <DependentUpon>KBDataContext.edmx</DependentUpon>
-    </Content>
-    <Content Include="KBDataContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KBDataContext.edmx</DependentUpon>
-      <LastGenOutput>KBDataContext.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,9 +10,9 @@ namespace KB.Repository
 {
     public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
-        protected KBEntities _dbContext;
+        protected KBDataContext _dbContext;
         protected IDbSet<TEntity> DataSet;
-        public RepositoryBase(KBEntities dbContext)
+        public RepositoryBase(KBDataContext dbContext)
         {
             DataSet = dbContext.Set<TEntity>();
             _dbContext = dbContext;
@@ -54,11 +54,13 @@ namespace KB.Repository
 
         public void Update(TEntity entity)
         {
+            _dbContext.Entry(entity).State = EntityState.Modified;
             _dbContext.SaveChanges();
         }
 
         public async Task UpdateAsync(TEntity entity)
         {
+            _dbContext.Entry(entity).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
     }
