@@ -18,6 +18,10 @@ namespace KB.WebApi.Controllers
         }
 
         // GET: api/Article
+        /// <summary>
+        /// Get all articles
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<t_KB_Article> GetArticle()
         {
             return _articleAppService.FindAll();

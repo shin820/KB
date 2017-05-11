@@ -197,7 +197,6 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Core\CastleDependencyResolver.cs" />
     <Compile Include="Core\CastleDependencyScope.cs" />
     <Compile Include="Core\ControllersInstaller.cs" />
