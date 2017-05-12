@@ -203,7 +203,6 @@
     <Compile Include="Core\CastleDependencyScope.cs" />
     <Compile Include="Core\ControllersInstaller.cs" />
     <Compile Include="Core\IocContainer.cs" />
-    <Compile Include="Core\KBInstaller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -286,6 +285,10 @@
     <ProjectReference Include="..\KB.Entity\KB.Entity.csproj">
       <Project>{fb079767-3df2-435c-89d3-e15f3d975098}</Project>
       <Name>KB.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KB.Infrastructure\KB.Infrastructure.csproj">
+      <Project>{fe79d2df-6b23-4278-9c84-fc1d6487c45b}</Project>
+      <Name>KB.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\KB.Service\KB.Service.csproj">
       <Project>{7f485985-ba40-4b9d-a0a9-63486c82f0af}</Project>
