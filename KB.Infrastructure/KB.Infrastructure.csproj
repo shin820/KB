@@ -46,10 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ApiResult.cs" />
+    <Compile Include="ErrorInfo.cs" />
     <Compile Include="Ioc\KBInstaller.cs" />
     <Compile Include="Ioc\RepositoryIocFacility.cs" />
     <Compile Include="Ioc\ServiceIocFacility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runtime\Checker.cs" />
+    <Compile Include="Runtime\Security\ClaimsIdentityExtensions.cs" />
+    <Compile Include="Runtime\Security\Comm100ClaimTypes.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

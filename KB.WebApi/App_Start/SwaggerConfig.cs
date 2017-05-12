@@ -57,11 +57,16 @@ namespace KB.WebApi
                         //c.BasicAuth("basic")
                         //    .Description("Basic HTTP Authentication");
                         //
-						// NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
                         //c.ApiKey("apiKey")
-                        //    .Description("API Key Authentication")
+                        //    .Description("Filling bearer token here")
                         //    .Name("apiKey")
                         //    .In("header");
+                        c.ApiKey("Token")
+                            .Description("API Key Authentication")
+                            .Name("Authorization")
+                            .In("header");
+
                         //
                         //c.OAuth2("oauth2")
                         //    .Description("OAuth2 Implicit Grant")
@@ -240,6 +245,7 @@ namespace KB.WebApi
                         // "apiKeyIn" can either be "query" or "header"                                                
                         //
                         //c.EnableApiKeySupport("apiKey", "header");
+                        c.EnableApiKeySupport("Authorization", "header");
                     });
         }
     }
