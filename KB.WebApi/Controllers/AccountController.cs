@@ -1,6 +1,7 @@
 ﻿using KB.Infrastructure;
 using KB.Infrastructure.Api;
 using KB.Infrastructure.Runtime.Security;
+using KB.WebApi.Core;
 using KB.WebApi.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -54,15 +55,7 @@ namespace KB.WebApi.Controllers
 
             //todo, validate user name and secret
 
-            ClaimsIdentity claimsIdentity = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie, ClaimTypes.NameIdentifier, ClaimTypes.Role);
-
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.NameIdentifier, "1"));
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, "Shin"));
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.Email, "abc@123.com"));
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "developer"));
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "special user"));
-            claimsIdentity.AddClaim(new Claim(Comm100ClaimTypes.SideId, "10000"));
-
+            ClaimsIdentity claimsIdentity = FakeClaimsIdentity.CreateIdentity();
             var ticket = new AuthenticationTicket(claimsIdentity, new AuthenticationProperties());
             ticket.Properties.IssuedUtc = DateTime.UtcNow;
             ticket.Properties.ExpiresUtc = DateTime.UtcNow.Add(TimeSpan.FromMinutes(30));

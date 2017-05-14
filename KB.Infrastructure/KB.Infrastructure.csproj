@@ -62,5 +62,9 @@
   <ItemGroup>
     <Analyzer Include="..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Authentication\" />
+    <Folder Include="Authorization\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
