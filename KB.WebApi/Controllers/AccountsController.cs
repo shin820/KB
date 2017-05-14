@@ -1,5 +1,6 @@
 ﻿using KB.Infrastructure;
 using KB.Infrastructure.Api;
+using KB.Infrastructure.Authentication;
 using KB.Infrastructure.Runtime.Security;
 using KB.WebApi.Core;
 using KB.WebApi.Models.Account;
@@ -18,11 +19,11 @@ using System.Web.Http;
 
 namespace KB.WebApi.Controllers
 {
-    public class AccountController : ApiController
+    public class AccountsController : ApiController
     {
         public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
 
-        static AccountController()
+        static AccountsController()
         {
             OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
         }
@@ -55,7 +56,7 @@ namespace KB.WebApi.Controllers
 
             //todo, validate user name and secret
 
-            ClaimsIdentity claimsIdentity = FakeClaimsIdentity.CreateIdentity();
+            ClaimsIdentity claimsIdentity = TestClaimsIdentity.Create();
             var ticket = new AuthenticationTicket(claimsIdentity, new AuthenticationProperties());
             ticket.Properties.IssuedUtc = DateTime.UtcNow;
             ticket.Properties.ExpiresUtc = DateTime.UtcNow.Add(TimeSpan.FromMinutes(30));

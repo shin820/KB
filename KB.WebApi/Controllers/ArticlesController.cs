@@ -8,26 +8,22 @@ using KB.Service.AppServices;
 
 namespace KB.WebApi.Controllers
 {
-    public class ArticleController : ApiController
+    public class ArticlesController : ApiController
     {
         private IArticleAppService _articleAppService;
 
-        public ArticleController(IArticleAppService articleAppService)
+        public ArticlesController(IArticleAppService articleAppService)
         {
             _articleAppService = articleAppService;
         }
 
-        // GET: api/Article
-        /// <summary>
-        /// Get all articles
-        /// </summary>
-        /// <returns></returns>
-        public IQueryable<t_KB_Article> GetArticle()
+        // GET: api/articles
+        public IQueryable<t_KB_Article> GetArticles()
         {
             return _articleAppService.FindAll();
         }
 
-        // GET: api/Article/5
+        // GET: api/articles/5
         [ResponseType(typeof(t_KB_Article))]
         public IHttpActionResult GetArticle(int id)
         {
@@ -40,7 +36,7 @@ namespace KB.WebApi.Controllers
             return Ok(article);
         }
 
-        // PUT: api/Article/5
+        // PUT: api/articles/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutArticle(int id, t_KB_Article article)
         {
@@ -73,7 +69,7 @@ namespace KB.WebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Article
+        // POST: api/articles
         [ResponseType(typeof(t_KB_Article))]
         public IHttpActionResult PostArticle(t_KB_Article article)
         {
@@ -87,7 +83,7 @@ namespace KB.WebApi.Controllers
             return CreatedAtRoute("DefaultApi", new { id = article.Id }, article);
         }
 
-        // DELETE: api/Article/5
+        // DELETE: api/articles/5
         [ResponseType(typeof(t_KB_Article))]
         public IHttpActionResult DeleteArticle(int id)
         {

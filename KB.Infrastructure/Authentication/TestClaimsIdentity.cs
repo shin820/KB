@@ -6,11 +6,11 @@ using System.Linq;
 using System.Security.Claims;
 using System.Web;
 
-namespace KB.WebApi.Core
+namespace KB.Infrastructure.Authentication
 {
-    public static class FakeClaimsIdentity
+    public static class TestClaimsIdentity
     {
-        public static ClaimsIdentity CreateIdentity()
+        public static ClaimsIdentity Create()
         {
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie, ClaimTypes.NameIdentifier, ClaimTypes.Role);
 

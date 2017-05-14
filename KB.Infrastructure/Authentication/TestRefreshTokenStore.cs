@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace KB.WebApi.Core
+namespace KB.Infrastructure.Authentication
 {
-    public class InMemoryRefreshTokenManager
+    public class TestRefreshTokenStore : IRefreshTokenStore
     {
         private static List<RefreshToken> RefreshTokens = new List<RefreshToken>();
 

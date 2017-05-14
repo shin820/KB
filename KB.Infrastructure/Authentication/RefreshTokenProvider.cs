@@ -5,14 +5,15 @@ using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
 
-namespace KB.WebApi.Core
+namespace KB.Infrastructure.Authentication
 {
     public class RefreshTokenProvider : IAuthenticationTokenProvider
     {
-        /// <summary>
-        /// just for test
-        /// </summary>
-        private InMemoryRefreshTokenManager _refreshTokenManager = new InMemoryRefreshTokenManager();
+        private IRefreshTokenStore _refrshTokenStore;
+        public RefreshTokenProvider(IRefreshTokenStore refrshTokenStore)
+        {
+            _refrshTokenStore = refrshTokenStore;
+        }
 
         public void Create(AuthenticationTokenCreateContext context)
         {
@@ -29,14 +30,10 @@ namespace KB.WebApi.Core
             }
 
             var refreshTokenId = Guid.NewGuid().ToString("n");
-
-            //using (AuthRepository _repo = new AuthRepository())
-            //{
             var refreshTokenLifeTime = context.OwinContext.Get<string>("as:clientRefreshTokenLifeTime");
 
             var token = new RefreshToken()
             {
-                //Id = Helper.GetHash(refreshTokenId),
                 Id = refreshTokenId,
                 ClientId = clientid,
                 Subject = context.Ticket.Identity.Name,
@@ -49,7 +46,7 @@ namespace KB.WebApi.Core
 
             token.ProtectedTicket = context.SerializeTicket();
 
-            _refreshTokenManager.Add(token);
+            _refrshTokenStore.Add(token);
             context.SetToken(refreshTokenId);
         }
 
@@ -64,13 +61,13 @@ namespace KB.WebApi.Core
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
 
             string refreshTokenId = context.Token;
-            var refreshToken = _refreshTokenManager.Find(refreshTokenId);
+            var refreshToken = _refrshTokenStore.Find(refreshTokenId);
 
             if (refreshToken != null)
             {
                 //Get protectedTicket from refreshToken class
                 context.DeserializeTicket(refreshToken.ProtectedTicket);
-                _refreshTokenManager.Delete(refreshTokenId);
+                _refrshTokenStore.Delete(refreshTokenId);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin.Security;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
@@ -7,10 +8,17 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace KB.WebApi.Core
+namespace KB.Infrastructure.Authentication
 {
     public class AuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
+        private IClientStore _clientStore;
+
+        public AuthorizationServerProvider(IClientStore clientStore)
+        {
+            _clientStore = clientStore;
+        }
+
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             string clientId = string.Empty;
@@ -21,58 +29,45 @@ namespace KB.WebApi.Core
                 context.TryGetFormCredentials(out clientId, out clientSecret);
             }
 
-            if (string.IsNullOrWhiteSpace(clientId) || string.IsNullOrWhiteSpace(clientSecret))
+            if (string.IsNullOrWhiteSpace(clientId))
             {
-                context.SetError("invalid_clientId", "ClientId and Client Secret should be sent.");
+                context.SetError("invalid_clientId", "ClientId should be sent.");
                 return Task.FromResult<object>(null);
             }
 
-            if (context.ClientId != "test_client" || clientSecret != "123")
+            Client client = _clientStore.Find(clientId);
+            if (client == null)
             {
-                context.SetError("invalid_clientId", "Invalid client id or client secret.");
+                context.SetError("invalid_clientId", string.Format("Client '{0}' is not registered in the system.", context.ClientId));
                 return Task.FromResult<object>(null);
             }
 
-            ////Client client = null;
-            //using (AuthRepository _repo = new AuthRepository())
-            //{
-            //    client = _repo.FindClient(context.ClientId);
-            //}
+            if (client.ApplicationType == ApplicationTypes.NativeConfidential)
+            {
+                if (string.IsNullOrWhiteSpace(clientSecret))
+                {
+                    context.SetError("invalid_clientId", "Client secret should be sent.");
+                    return Task.FromResult<object>(null);
+                }
+                else
+                {
+                    if (client.Secret != clientSecret)
+                    {
+                        context.SetError("invalid_clientId", "Client secret is invalid.");
+                        return Task.FromResult<object>(null);
+                    }
+                }
+            }
 
-            //if (client == null)
-            //{
-            //    context.SetError("invalid_clientId", string.Format("Client '{0}' is not registered in the system.", context.ClientId));
-            //    return Task.FromResult<object>(null);
-            //}
+            if (!client.Active)
+            {
+                context.SetError("invalid_clientId", "Client is inactive.");
+                return Task.FromResult<object>(null);
+            }
 
-            //if (client.ApplicationType == Models.ApplicationTypes.NativeConfidential)
-            //{
-            //    if (string.IsNullOrWhiteSpace(clientSecret))
-            //    {
-            //        context.SetError("invalid_clientId", "Client secret should be sent.");
-            //        return Task.FromResult<object>(null);
-            //    }
-            //    else
-            //    {
-            //        if (client.Secret != Helper.GetHash(clientSecret))
-            //        {
-            //            context.SetError("invalid_clientId", "Client secret is invalid.");
-            //            return Task.FromResult<object>(null);
-            //        }
-            //    }
-            //}
+            context.OwinContext.Set<string>("as:clientAllowedOrigin", client.AllowedOrigin);
+            context.OwinContext.Set<string>("as:clientRefreshTokenLifeTime", client.RefreshTokenLifeTime.ToString());
 
-            //if (!client.Active)
-            //{
-            //    context.SetError("invalid_clientId", "Client is inactive.");
-            //    return Task.FromResult<object>(null);
-            //}
-
-            //context.OwinContext.Set<string>("as:clientAllowedOrigin", client.AllowedOrigin);
-            //context.OwinContext.Set<string>("as:clientRefreshTokenLifeTime", client.RefreshTokenLifeTime.ToString());
-
-            context.OwinContext.Set<string>("as:clientAllowedOrigin", "*");
-            context.OwinContext.Set<string>("as:clientRefreshTokenLifeTime", "7200");
             context.Validated();
             return Task.FromResult<object>(null);
         }
@@ -82,7 +77,7 @@ namespace KB.WebApi.Core
 
             var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
 
-            if (allowedOrigin == null) allowedOrigin = "*";
+            if (allowedOrigin == null) { allowedOrigin = "*"; }
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
 
@@ -103,7 +98,7 @@ namespace KB.WebApi.Core
             //    }
             //}
 
-            var identity = FakeClaimsIdentity.CreateIdentity();
+            var identity = TestClaimsIdentity.Create();
 
             var props = new AuthenticationProperties(new Dictionary<string, string>
                 {

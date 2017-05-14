@@ -1,4 +1,5 @@
-﻿using KB.WebApi.App_Start;
+﻿using KB.Infrastructure.Authentication;
+using KB.WebApi.App_Start;
 using KB.WebApi.Controllers;
 using KB.WebApi.Core;
 using Microsoft.Owin;
@@ -21,12 +22,12 @@ namespace KB.WebApi.App_Start
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
-                Provider = new AuthorizationServerProvider(),
-                RefreshTokenProvider = new RefreshTokenProvider()
+                Provider = new AuthorizationServerProvider(new TestClientStore()),
+                RefreshTokenProvider = new RefreshTokenProvider(new TestRefreshTokenStore())
             };
 
             app.UseOAuthAuthorizationServer(oAuthServerOptions);
-            app.UseOAuthBearerAuthentication(AccountController.OAuthBearerOptions);
+            app.UseOAuthBearerAuthentication(AccountsController.OAuthBearerOptions);
 
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
         }
