@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KB.Dto.Article
 {
-    public class ArticleListReponse
+    public class ArticleListResponse
     {
         public int Id { get; set; }
 

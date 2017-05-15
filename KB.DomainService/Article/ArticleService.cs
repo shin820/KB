@@ -10,20 +10,29 @@ namespace KB.DomainService.Article
 {
     public class ArticleService : IArticleService
     {
-        private IArticleRepository _repository;
-        public ArticleService(IArticleRepository repository)
+        private IArticleRepository _articleRepository;
+        private ITagRepository _tagRepository;
+        private IArticlesTagsRelationRepository _articleTagRelationRepository;
+
+        public ArticleService(
+            IArticleRepository articleRepository,
+            ITagRepository tagRepository,
+            IArticlesTagsRelationRepository articleTagRelationRepository
+            )
         {
-            _repository = repository;
+            _articleRepository = articleRepository;
+            _tagRepository = tagRepository;
+            _articleTagRelationRepository = articleTagRelationRepository;
         }
 
         public t_KB_Article Find(int id)
         {
-            return _repository.Find(id);
+            return _articleRepository.Find(id);
         }
 
         public IQueryable<t_KB_Article> FindAll()
         {
-            return _repository.FindAll().OrderByDescending(t => t.Id);
+            return _articleRepository.FindAll().OrderByDescending(t => t.Id);
         }
 
         public void Delete(int id)
@@ -31,20 +40,69 @@ namespace KB.DomainService.Article
             t_KB_Article article = this.Find(id);
             if (article != null)
             {
-                _repository.Delete(article);
+                _articleRepository.Delete(article);
             }
         }
 
         public void Update(t_KB_Article article)
         {
             article.ModifiedTime = DateTime.UtcNow;
-            _repository.Update(article);
+            _articleRepository.Update(article);
         }
 
         public void Insert(t_KB_Article article)
         {
             article.CreatedTime = DateTime.UtcNow;
-            _repository.Insert(article);
+            _articleRepository.Insert(article);
+        }
+
+        public void AddTag(int articleId, int tagId)
+        {
+            t_KB_Article article = _articleRepository.Find(articleId);
+            if (article == null)
+            {
+                throw new ArgumentException("Invalid article id.");
+            }
+            t_KB_Tag tag = _tagRepository.Find(tagId);
+            if (tag == null)
+            {
+                throw new ArgumentException("Invalid tag id.");
+            }
+
+            //if (article.KBId != tag.KBId)
+            //{
+            //    throw new InvalidOperationException("Article and tag should belong to the same KB.");
+            //}
+
+            bool isExisted = _articleTagRelationRepository.FindAll()
+                .Any(t => t.ArticleId == article.Id && t.TagId == tag.Id);
+            if (isExisted)
+            {
+                throw new InvalidOperationException("Relation existed.");
+            }
+
+            var relateion = new t_KB_ArticlesTagsRelation
+            {
+                ArticleId = article.Id,
+                TagId = tag.Id,
+                KBId = article.KBId,
+                SiteId = article.SiteId
+            };
+
+            _articleTagRelationRepository.Insert(relateion);
+        }
+
+        public void RemoveTag(int articleId, int tagId)
+        {
+            t_KB_ArticlesTagsRelation relation = _articleTagRelationRepository
+                .FindAll()
+                .Where(t => t.ArticleId == articleId && t.TagId == tagId)
+                .FirstOrDefault();
+
+            if (relation != null)
+            {
+                _articleTagRelationRepository.Delete(relation);
+            }
         }
     }
 }

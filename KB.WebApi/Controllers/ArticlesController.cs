@@ -5,9 +5,11 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using KB.Service.AppServices;
 using KB.Dto.Article;
+using System.Net.Http;
 
 namespace KB.WebApi.Controllers
 {
+    [RoutePrefix("api/articles")]
     public class ArticlesController : ApiController
     {
         private IArticleAppService _articleAppService;
@@ -18,7 +20,7 @@ namespace KB.WebApi.Controllers
         }
 
         // GET: api/articles
-        public IQueryable<ArticleListReponse> GetArticles()
+        public IQueryable<ArticleListResponse> GetArticles()
         {
             return _articleAppService.FindAll();
         }
@@ -91,6 +93,24 @@ namespace KB.WebApi.Controllers
             _articleAppService.Delete(id);
 
             return Ok(article);
+        }
+
+        [HttpPost]
+        [Route("{articleId}/tags/{tagId}")]
+        public IHttpActionResult AddTag(int articleId, int tagId)
+        {
+            // todo : error handling.
+            _articleAppService.AddTag(articleId, tagId);
+            return StatusCode(HttpStatusCode.Created);
+        }
+
+        [HttpDelete]
+        [Route("{articleId}/tags/{tagId}")]
+        public IHttpActionResult RemoveTag(int articleId, int tagId)
+        {
+            // todo : error handling.
+            _articleAppService.RemoveTag(articleId, tagId);
+            return StatusCode(HttpStatusCode.NoContent);
         }
     }
 }

@@ -67,6 +67,8 @@
     <Compile Include="KnowlegeBase\IKnowlegeBaseService.cs" />
     <Compile Include="KnowlegeBase\KnowlegeBaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tag\ITagService.cs" />
+    <Compile Include="Tag\TagService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KB.Entity\KB.Entity.csproj">

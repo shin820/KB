@@ -14,5 +14,7 @@ namespace KB.DomainService.Article
         IQueryable<t_KB_Article> FindAll();
         void Update(t_KB_Article article);
         void Insert(t_KB_Article article);
+        void AddTag(int articleId, int tagId);
+        void RemoveTag(int articleId, int tagId);
     }
 }

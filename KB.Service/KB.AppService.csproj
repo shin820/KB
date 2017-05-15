@@ -55,6 +55,8 @@
     <Compile Include="KnowlegeBase\IKnowlegeBaseAppService.cs" />
     <Compile Include="KnowlegeBase\KnowlegeBaseAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tag\ITagAppService.cs" />
+    <Compile Include="Tag\TagAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

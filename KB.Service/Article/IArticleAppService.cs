@@ -7,8 +7,10 @@ namespace KB.Service.AppServices
     {
         void Delete(int id);
         ArticleDetailResponse Find(int id);
-        IQueryable<ArticleListReponse> FindAll();
+        IQueryable<ArticleListResponse> FindAll();
         ArticleDetailResponse Insert(ArticleCreateRequest createRequest);
         void Update(int id, ArticleUpdateRequest updateRequest);
+        void AddTag(int articleId, int tagId);
+        void RemoveTag(int articleId, int tagId);
     }
 }

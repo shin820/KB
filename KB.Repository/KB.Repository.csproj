@@ -59,7 +59,9 @@
     <Compile Include="IRepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ArticleRepository.cs" />
+    <Compile Include="Repositories\ArticlesTagsRelationRepository.cs" />
     <Compile Include="Repositories\KnowlegeBaseRepository.cs" />
+    <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
