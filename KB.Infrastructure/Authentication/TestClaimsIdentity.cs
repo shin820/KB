@@ -17,9 +17,10 @@ namespace KB.Infrastructure.Authentication
             claimsIdentity.AddClaim(new Claim(ClaimTypes.NameIdentifier, "1"));
             claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, "test"));
             claimsIdentity.AddClaim(new Claim(ClaimTypes.Email, "abc@123.com"));
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "developer"));
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "special user"));
+            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
             claimsIdentity.AddClaim(new Claim(Comm100ClaimTypes.SideId, "10000"));
+            claimsIdentity.AddClaim(new Claim(Comm100ClaimTypes.Permission, "get_me"));
+            claimsIdentity.AddClaim(new Claim(Comm100ClaimTypes.Permission, "create_article"));
 
             return claimsIdentity;
         }

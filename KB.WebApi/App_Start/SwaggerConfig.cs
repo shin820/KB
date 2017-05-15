@@ -67,7 +67,6 @@ namespace KB.WebApi
                             .Name("Authorization")
                             .In("header");
 
-                        //
                         //c.OAuth2("oauth2")
                         //    .Description("OAuth2 Implicit Grant")
                         //    .Flow("implicit")

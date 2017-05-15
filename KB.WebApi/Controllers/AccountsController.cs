@@ -19,6 +19,7 @@ using System.Web.Http;
 
 namespace KB.WebApi.Controllers
 {
+    [RoutePrefix("api/accounts")]
     public class AccountsController : ApiController
     {
         public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
@@ -28,7 +29,7 @@ namespace KB.WebApi.Controllers
             OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
         }
 
-        [Authorize(Roles = "developer")]
+        [ApiAuthorize(Permissions = "get_me")]
         [HttpGet]
         [Route("me")]
         public ApiResult<Me> Me()
