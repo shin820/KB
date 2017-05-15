@@ -234,6 +234,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KnowlegeBasesController.cs" />
     <Compile Include="Core\ApiAuthorizeAttribute.cs" />
     <Compile Include="Core\CastleDependencyResolver.cs" />
     <Compile Include="Core\CastleDependencyScope.cs" />

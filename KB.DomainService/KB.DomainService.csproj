@@ -64,6 +64,8 @@
   <ItemGroup>
     <Compile Include="Article\ArticleService.cs" />
     <Compile Include="Article\IArticleService.cs" />
+    <Compile Include="KnowlegeBase\IKnowlegeBaseService.cs" />
+    <Compile Include="KnowlegeBase\KnowlegeBaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

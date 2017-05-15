@@ -48,7 +48,11 @@
     <Compile Include="Article\ArticleDetailResponse.cs" />
     <Compile Include="Article\ArticleListReponse.cs" />
     <Compile Include="Article\ArticleUpdateRequest.cs" />
-    <Compile Include="Mapping\AriticleMappings.cs" />
+    <Compile Include="DtoMappings.cs" />
+    <Compile Include="KB\KBCreateRequest.cs" />
+    <Compile Include="KB\KBDetailResponse.cs" />
+    <Compile Include="KB\KBListResponse.cs" />
+    <Compile Include="KB\KBUpdateRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

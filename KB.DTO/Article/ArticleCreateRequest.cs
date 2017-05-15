@@ -10,6 +10,12 @@ namespace KB.Dto.Article
     public class ArticleCreateRequest
     {
         [Required]
+        public int KBId { get; set; }
+
+        [Required]
+        public int SiteId { get; set; }
+
+        [Required]
         public string Body { get; set; }
 
         [Required]

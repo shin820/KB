@@ -11,6 +11,10 @@ namespace KB.Dto.Article
     {
         public int Id { get; set; }
 
+        public int KBId { get; set; }
+
+        public int SiteId { get; set; }
+
         public string Body { get; set; }
 
         public string CustomURL { get; set; }

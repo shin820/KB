@@ -35,16 +35,16 @@ namespace KB.DomainService.Article
             }
         }
 
-        public void Update(t_KB_Article message)
+        public void Update(t_KB_Article article)
         {
-            message.ModifiedTime = DateTime.UtcNow;
-            _repository.Update(message);
+            article.ModifiedTime = DateTime.UtcNow;
+            _repository.Update(article);
         }
 
-        public void Insert(t_KB_Article message)
+        public void Insert(t_KB_Article article)
         {
-            message.CreatedTime = DateTime.UtcNow;
-            _repository.Insert(message);
+            article.CreatedTime = DateTime.UtcNow;
+            _repository.Insert(article);
         }
     }
 }
