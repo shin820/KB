@@ -1,4 +1,5 @@
-﻿using KB.WebApi.Core;
+﻿using AutoMapper;
+using KB.WebApi.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,12 @@ namespace KB.WebApi
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             IocContainer.Setup();
+
+            Mapper.Initialize(cfg =>
+                cfg.AddProfiles(new[] {
+                    "KB.Dto"
+                })
+            );
         }
     }
 }

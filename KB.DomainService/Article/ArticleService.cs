@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KB.Service.AppServices
+namespace KB.DomainService.Article
 {
-    public class ArticleAppService : IArticleAppService
+    public class ArticleService : IArticleService
     {
         private IArticleRepository _repository;
-        public ArticleAppService(IArticleRepository repository)
+        public ArticleService(IArticleRepository repository)
         {
             _repository = repository;
         }
@@ -23,21 +23,27 @@ namespace KB.Service.AppServices
 
         public IQueryable<t_KB_Article> FindAll()
         {
-            return _repository.FindAll().OrderByDescending(t=>t.Id);
+            return _repository.FindAll().OrderByDescending(t => t.Id);
         }
 
-        public void Delete(t_KB_Article message)
+        public void Delete(int id)
         {
-            _repository.Delete(message);
+            t_KB_Article article = this.Find(id);
+            if (article != null)
+            {
+                _repository.Delete(article);
+            }
         }
 
         public void Update(t_KB_Article message)
         {
+            message.ModifiedTime = DateTime.UtcNow;
             _repository.Update(message);
         }
 
         public void Insert(t_KB_Article message)
         {
+            message.CreatedTime = DateTime.UtcNow;
             _repository.Insert(message);
         }
     }

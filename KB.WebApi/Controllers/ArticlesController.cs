@@ -3,8 +3,8 @@ using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using KB.Entity;
 using KB.Service.AppServices;
+using KB.Dto.Article;
 
 namespace KB.WebApi.Controllers
 {
@@ -18,16 +18,16 @@ namespace KB.WebApi.Controllers
         }
 
         // GET: api/articles
-        public IQueryable<t_KB_Article> GetArticles()
+        public IQueryable<ArticleListReponse> GetArticles()
         {
             return _articleAppService.FindAll();
         }
 
         // GET: api/articles/5
-        [ResponseType(typeof(t_KB_Article))]
+        [ResponseType(typeof(ArticleDetailResponse))]
         public IHttpActionResult GetArticle(int id)
         {
-            t_KB_Article article = _articleAppService.Find(id);
+            ArticleDetailResponse article = _articleAppService.Find(id);
             if (article == null)
             {
                 return NotFound();
@@ -38,21 +38,16 @@ namespace KB.WebApi.Controllers
 
         // PUT: api/articles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutArticle(int id, t_KB_Article article)
+        public IHttpActionResult PutArticle(int id, ArticleUpdateRequest article)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != article.Id)
-            {
-                return BadRequest();
-            }
-
             try
             {
-                _articleAppService.Update(article);
+                _articleAppService.Update(id, article);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -70,30 +65,30 @@ namespace KB.WebApi.Controllers
         }
 
         // POST: api/articles
-        [ResponseType(typeof(t_KB_Article))]
-        public IHttpActionResult PostArticle(t_KB_Article article)
+        [ResponseType(typeof(ArticleDetailResponse))]
+        public IHttpActionResult PostArticle(ArticleCreateRequest createRequest)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _articleAppService.Insert(article);
+            var article = _articleAppService.Insert(createRequest);
 
             return CreatedAtRoute("DefaultApi", new { id = article.Id }, article);
         }
 
         // DELETE: api/articles/5
-        [ResponseType(typeof(t_KB_Article))]
+        [ResponseType(typeof(ArticleDetailResponse))]
         public IHttpActionResult DeleteArticle(int id)
         {
-            t_KB_Article article = _articleAppService.Find(id);
+            var article = _articleAppService.Find(id);
             if (article == null)
             {
                 return NotFound();
             }
 
-            _articleAppService.Delete(article);
+            _articleAppService.Delete(id);
 
             return Ok(article);
         }

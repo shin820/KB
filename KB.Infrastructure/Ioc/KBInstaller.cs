@@ -9,7 +9,8 @@ namespace KB.Infrastructure.Ioc
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.AddFacility<RepositoryIocFacility>();
-            container.AddFacility<ServiceIocFacility>();
+            container.AddFacility<AppServiceIocFacility>();
+            container.AddFacility<DomainServiceIocFacility>();
         }
     }
 }
