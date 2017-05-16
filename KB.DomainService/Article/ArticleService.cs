@@ -42,6 +42,12 @@ namespace KB.DomainService.Article
             {
                 _articleRepository.Delete(article);
             }
+
+            var relations = _articleTagRelationRepository.FindAll().Where(t => t.ArticleId == id);
+            foreach (var relation in relations)
+            {
+                _articleTagRelationRepository.Delete(relation);
+            }
         }
 
         public void Update(t_KB_Article article)
@@ -103,6 +109,13 @@ namespace KB.DomainService.Article
             {
                 _articleTagRelationRepository.Delete(relation);
             }
+        }
+
+        public IQueryable<t_KB_Tag> FindTags(int articleId)
+        {
+            return _articleTagRelationRepository
+                 .FindAll()
+                 .Where(t => t.ArticleId == articleId).Select(t => t.t_KB_Tag);
         }
     }
 }

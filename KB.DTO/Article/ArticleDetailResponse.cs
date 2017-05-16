@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KB.Dto.Tag;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -32,5 +33,7 @@ namespace KB.Dto.Article
         public string Name { get; set; }
 
         public int? Index { get; set; }
+
+        public List<TagListResponse> Tags { get; set; }
     }
 }

@@ -16,5 +16,6 @@ namespace KB.DomainService.Article
         void Insert(t_KB_Article article);
         void AddTag(int articleId, int tagId);
         void RemoveTag(int articleId, int tagId);
+        IQueryable<t_KB_Tag> FindTags(int articleId);
     }
 }

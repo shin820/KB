@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using KB.DomainService.Article;
 using KB.DomainService.Tag;
 using KB.Dto.Article;
+using KB.Dto.Tag;
 using KB.Entity;
 using System.Linq;
 
@@ -24,7 +25,13 @@ namespace KB.Service.AppServices
         public ArticleDetailResponse Find(int id)
         {
             var article = _articleService.Find(id);
-            return Mapper.Map<ArticleDetailResponse>(article);
+            var articleDto = Mapper.Map<ArticleDetailResponse>(article);
+            articleDto.Tags = _articleService
+                .FindTags(id)
+                .ProjectTo<TagListResponse>()
+                .ToList();
+
+            return articleDto;
         }
 
         public IQueryable<ArticleListResponse> FindAll()
