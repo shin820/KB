@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using KB.Dto.Tag;
+using KB.Object.Tags;
 using KB.Entity;
 using KB.Repository.Repositories;
 using System;
 using System.Linq;
 
-namespace KB.AppService.Tag
+namespace KB.BizService.Tags
 {
     public class TagService : ITagService
     {
@@ -16,17 +16,17 @@ namespace KB.AppService.Tag
             _repository = repository;
         }
 
-        public TagDto Find(int id)
+        public Tag Find(int id)
         {
             var tag = _repository.Find(id);
-            return Mapper.Map<TagDto>(tag);
+            return Mapper.Map<Tag>(tag);
         }
 
-        public IQueryable<TagDto> FindAll()
+        public IQueryable<Tag> FindAll()
         {
             return _repository.FindAll()
                 .OrderByDescending(t => t.Id)
-                .ProjectTo<TagDto>(); ;
+                .ProjectTo<Tag>(); ;
         }
 
         public void Delete(int id)
@@ -38,7 +38,7 @@ namespace KB.AppService.Tag
             }
         }
 
-        public void Update(int id, TagDto tagDto)
+        public void Update(int id, Tag tagDto)
         {
             t_KB_Tag tag = _repository.Find(id);
             if (tag != null)
@@ -49,14 +49,14 @@ namespace KB.AppService.Tag
             }
         }
 
-        public TagDto Insert(TagDto tagDto)
+        public Tag Insert(Tag tagDto)
         {
             t_KB_Tag tag = Mapper.Map<t_KB_Tag>(tagDto);
 
             tag.CreatedTime = DateTime.UtcNow;
             _repository.Insert(tag);
 
-            return Mapper.Map<TagDto>(tag);
+            return Mapper.Map<Tag>(tag);
         }
     }
 }

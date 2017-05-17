@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using KB.Dto.Article;
-using KB.Dto.Tag;
+using KB.Object.Articles;
+using KB.Object.Tags;
 using KB.Entity;
 using KB.Repository.Repositories;
 using System;
 using System.Linq;
 
-namespace KB.Service.AppServices
+namespace KB.BizService.Articles
 {
     public class ArticleAppService : IArticleAppService
     {
@@ -27,25 +27,25 @@ namespace KB.Service.AppServices
             _articleTagRelationRepository = articleTagRelationRepository;
         }
 
-        public ArticleDetailDto Find(int id)
+        public ArticleDetail Find(int id)
         {
             var article = _articleRepository.Find(id);
-            var articleDto = Mapper.Map<ArticleDetailDto>(article);
+            var articleDto = Mapper.Map<ArticleDetail>(article);
             articleDto.Tags = _articleTagRelationRepository
                  .FindAll()
                  .Where(t => t.ArticleId == id)
                  .Select(t => t.t_KB_Tag)
-                 .ProjectTo<TagDto>()
+                 .ProjectTo<Tag>()
                  .ToList();
 
             return articleDto;
         }
 
-        public IQueryable<ArticleDto> FindAll()
+        public IQueryable<Article> FindAll()
         {
             return _articleRepository.FindAll()
                 .OrderByDescending(t => t.Id)
-                .ProjectTo<ArticleDto>();
+                .ProjectTo<Article>();
         }
 
         public void Delete(int id)
@@ -63,7 +63,7 @@ namespace KB.Service.AppServices
             }
         }
 
-        public void Update(int id, ArticleDto articleDto)
+        public void Update(int id, Article articleDto)
         {
             t_KB_Article article = _articleRepository.Find(id);
             if (article != null)
@@ -75,13 +75,13 @@ namespace KB.Service.AppServices
             }
         }
 
-        public ArticleDto Insert(ArticleDto articleDto)
+        public Article Insert(Article articleDto)
         {
             t_KB_Article article = Mapper.Map<t_KB_Article>(articleDto);
             article.CreatedTime = DateTime.UtcNow;
             _articleRepository.Insert(article);
 
-            return Mapper.Map<ArticleDto>(article);
+            return Mapper.Map<Article>(article);
         }
 
         public void AddTag(int articleId, int tagId)

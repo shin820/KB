@@ -326,17 +326,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KB.DTO\KB.Dto.csproj">
+    <ProjectReference Include="..\KB.DTO\KB.Object.csproj">
       <Project>{a1354cfc-15c7-48a8-85d6-b1a656c949f5}</Project>
-      <Name>KB.Dto</Name>
+      <Name>KB.Object</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KB.Infrastructure\KB.Infrastructure.csproj">
+    <ProjectReference Include="..\KB.Infrastructure\KB.Framework.csproj">
       <Project>{fe79d2df-6b23-4278-9c84-fc1d6487c45b}</Project>
-      <Name>KB.Infrastructure</Name>
+      <Name>KB.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KB.Service\KB.BusinessService.csproj">
+    <ProjectReference Include="..\KB.Service\KB.BizService.csproj">
       <Project>{7f485985-ba40-4b9d-a0a9-63486c82f0af}</Project>
-      <Name>KB.BusinessService</Name>
+      <Name>KB.BizService</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

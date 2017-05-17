@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using KB.Dto.KB;
+using KB.Object.KB;
 using KB.Entity;
 using KB.Repository.Repositories;
 using System.Linq;
 
-namespace KB.AppService.KnowlegeBase
+namespace KB.BizService.KnowlegeBases
 {
     public class KnowlegeBaseService : IKnowlegeBaseService
     {
@@ -17,17 +17,17 @@ namespace KB.AppService.KnowlegeBase
             _repository = repository;
         }
 
-        public KBDto Find(int id)
+        public KnowlegeBase Find(int id)
         {
             var article = _repository.Find(id);
-            return Mapper.Map<KBDto>(article);
+            return Mapper.Map<KnowlegeBase>(article);
         }
 
-        public IQueryable<KBDto> FindAll()
+        public IQueryable<KnowlegeBase> FindAll()
         {
             return _repository.FindAll()
                 .OrderByDescending(t => t.Id)
-                .ProjectTo<KBDto>(); ;
+                .ProjectTo<KnowlegeBase>(); ;
         }
 
         public void Delete(int id)
@@ -39,7 +39,7 @@ namespace KB.AppService.KnowlegeBase
             }
         }
 
-        public void Update(int id, KBDto kbDto)
+        public void Update(int id, KnowlegeBase kbDto)
         {
             t_KB_KnowledgeBase kb = _repository.Find(id);
             if (kb != null)
@@ -50,12 +50,12 @@ namespace KB.AppService.KnowlegeBase
             }
         }
 
-        public KBDto Insert(KBDto kbDto)
+        public KnowlegeBase Insert(KnowlegeBase kbDto)
         {
             t_KB_KnowledgeBase kb = Mapper.Map<t_KB_KnowledgeBase>(kbDto);
             _repository.Insert(kb);
 
-            return Mapper.Map<KBDto>(kb);
+            return Mapper.Map<KnowlegeBase>(kb);
         }
     }
 }

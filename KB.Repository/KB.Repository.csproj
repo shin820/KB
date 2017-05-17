@@ -81,9 +81,9 @@
       <Project>{fb079767-3df2-435c-89d3-e15f3d975098}</Project>
       <Name>KB.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KB.Infrastructure\KB.Infrastructure.csproj">
+    <ProjectReference Include="..\KB.Infrastructure\KB.Framework.csproj">
       <Project>{fe79d2df-6b23-4278-9c84-fc1d6487c45b}</Project>
-      <Name>KB.Infrastructure</Name>
+      <Name>KB.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

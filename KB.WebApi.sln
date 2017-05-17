@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Repository", "KB.Reposit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Entity", "KB.Entity\KB.Entity.csproj", "{FB079767-3DF2-435C-89D3-E15F3D975098}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.BusinessService", "KB.Service\KB.BusinessService.csproj", "{7F485985-BA40-4B9D-A0A9-63486C82F0AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.BizService", "KB.Service\KB.BizService.csproj", "{7F485985-BA40-4B9D-A0A9-63486C82F0AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Infrastructure", "KB.Infrastructure\KB.Infrastructure.csproj", "{FE79D2DF-6B23-4278-9C84-FC1D6487C45B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Framework", "KB.Infrastructure\KB.Framework.csproj", "{FE79D2DF-6B23-4278-9C84-FC1D6487C45B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Dto", "KB.DTO\KB.Dto.csproj", "{A1354CFC-15C7-48A8-85D6-B1A656C949F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Object", "KB.DTO\KB.Object.csproj", "{A1354CFC-15C7-48A8-85D6-B1A656C949F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

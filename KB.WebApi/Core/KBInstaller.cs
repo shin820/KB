@@ -1,7 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using KB.BusinessService;
+using KB.BizService;
 
 namespace KB.WebApi.Core
 {

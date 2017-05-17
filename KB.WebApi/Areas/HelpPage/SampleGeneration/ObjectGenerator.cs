@@ -415,7 +415,7 @@ namespace KB.WebApi.Areas.HelpPage
                     { typeof(Int16), index => (Int16)(index % Int16.MaxValue) },
                     { typeof(Int32), index => (Int32)(index % Int32.MaxValue) },
                     { typeof(Int64), index => (Int64)index },
-                    { typeof(Object), index => new object() },
+                    { typeof(object), index => new object() },
                     { typeof(SByte), index => (SByte)64 },
                     { typeof(Single), index => (Single)(index + 0.1) },
                     { 
