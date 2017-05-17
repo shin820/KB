@@ -4,7 +4,13 @@ namespace KB.Object.Tags
 {
     public class Tag
     {
-        public int Id { get; set; }
+        public Tag(int id, int siteId)
+        {
+            this.Id = id;
+            this.SiteId = siteId;
+        }
+
+        public int Id { get; private set; }
 
         [Required]
         [StringLength(256)]
@@ -13,7 +19,6 @@ namespace KB.Object.Tags
         [Required]
         public int KBId { get; set; }
 
-        [Required]
-        public int SiteId { get; set; }
+        public int SiteId { get; }
     }
 }

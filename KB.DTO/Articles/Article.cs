@@ -9,13 +9,18 @@ namespace KB.Object.Articles
 {
     public class Article
     {
-        public int Id { get; set; }
+        public Article(int id, int siteId)
+        {
+            this.Id = id;
+            this.SiteId = siteId;
+        }
+
+        public int Id { get; }
 
         [Required]
         public int KBId { get; set; }
 
-        [Required]
-        public int SiteId { get; set; }
+        public int SiteId { get;}
 
         [Required]
         public string Body { get; set; }

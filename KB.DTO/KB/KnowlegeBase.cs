@@ -4,7 +4,13 @@ namespace KB.Object.KB
 {
     public class KnowlegeBase
     {
-        public int Id { get; set; }
+        public KnowlegeBase(int id,int siteId)
+        {
+            this.Id = id;
+            this.SiteId = siteId;
+        }
+
+        public int Id { get; }
 
         public int KnowledgebaseHomePage { get; set; }
 
@@ -22,7 +28,7 @@ namespace KB.Object.KB
 
         public int? SystemId { get; set; }
 
-        public int SiteId { get; set; }
+        public int SiteId { get; }
 
         [StringLength(256)]
         public string Name { get; set; }
