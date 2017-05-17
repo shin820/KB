@@ -1,6 +1,8 @@
 ﻿using Castle.MicroKernel;
 using Castle.MicroKernel.Facilities;
 using Castle.MicroKernel.Registration;
+using System.Data.Entity;
+using KB.Entity;
 
 namespace KB.Repository
 {
@@ -8,7 +10,8 @@ namespace KB.Repository
     {
         public static void Init(IKernel kernel)
         {
-            kernel.Register(Classes.FromAssemblyNamed("KB.Entity").Pick().If(t=>t.Name== "KBDataContext")
+            kernel.Register(Component.For(typeof(DbContext))
+                                     .UsingFactoryMethod(k => { return DbContextFactory.Create(k); })
                                      .LifestylePerWebRequest(),
                             //Component.For(typeof(IRepositoryBase<>))
                             //         .ImplementedBy(typeof(RepositoryBase<>))

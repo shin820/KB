@@ -10,9 +10,9 @@ namespace KB.Repository
 {
     public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
-        protected KBDataContext _dbContext;
+        protected DbContext _dbContext;
         protected IDbSet<TEntity> DataSet;
-        public RepositoryBase(KBDataContext dbContext)
+        public RepositoryBase(DbContext dbContext)
         {
             DataSet = dbContext.Set<TEntity>();
             _dbContext = dbContext;
