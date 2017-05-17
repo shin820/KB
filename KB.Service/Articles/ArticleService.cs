@@ -11,14 +11,14 @@ using System.Transactions;
 
 namespace KB.BizService.Articles
 {
-    public class ArticleAppService : IArticleAppService
+    public class ArticleService : IArticleService
     {
         private IArticleRepository _articleRepository;
         private ITagRepository _tagRepository;
         private IArticlesTagsRelationRepository _articleTagRelationRepository;
 
 
-        public ArticleAppService(
+        public ArticleService(
             IArticleRepository articleRepository,
             ITagRepository tagRepository,
             IArticlesTagsRelationRepository articleTagRelationRepository

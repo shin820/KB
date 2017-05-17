@@ -3,7 +3,7 @@ using KB.Object.Articles;
 
 namespace KB.BizService.Articles
 {
-    public interface IArticleAppService
+    public interface IArticleService
     {
         void Delete(int id);
         ArticleDetail Find(int id);
