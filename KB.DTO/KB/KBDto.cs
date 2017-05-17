@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace KB.Dto.KB
 {
-    public class KBUpdateRequest
+    public class KBDto
     {
+        public int Id { get; set; }
+
         public int KnowledgebaseHomePage { get; set; }
 
         public int? CampaignId { get; set; }

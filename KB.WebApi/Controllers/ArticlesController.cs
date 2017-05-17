@@ -20,16 +20,16 @@ namespace KB.WebApi.Controllers
         }
 
         // GET: api/articles
-        public IQueryable<ArticleListResponse> GetArticles()
+        public IQueryable<ArticleDto> GetArticles()
         {
             return _articleAppService.FindAll();
         }
 
         // GET: api/articles/5
-        [ResponseType(typeof(ArticleDetailResponse))]
+        [ResponseType(typeof(ArticleDetailDto))]
         public IHttpActionResult GetArticle(int id)
         {
-            ArticleDetailResponse article = _articleAppService.Find(id);
+            ArticleDetailDto article = _articleAppService.Find(id);
             if (article == null)
             {
                 return NotFound();
@@ -40,7 +40,7 @@ namespace KB.WebApi.Controllers
 
         // PUT: api/articles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutArticle(int id, ArticleUpdateRequest article)
+        public IHttpActionResult PutArticle(int id, ArticleDto article)
         {
             if (!ModelState.IsValid)
             {
@@ -67,8 +67,8 @@ namespace KB.WebApi.Controllers
         }
 
         // POST: api/articles
-        [ResponseType(typeof(ArticleDetailResponse))]
-        public IHttpActionResult PostArticle(ArticleCreateRequest createRequest)
+        [ResponseType(typeof(ArticleDto))]
+        public IHttpActionResult PostArticle(ArticleDto createRequest)
         {
             if (!ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace KB.WebApi.Controllers
         }
 
         // DELETE: api/articles/5
-        [ResponseType(typeof(ArticleDetailResponse))]
+        [ResponseType(typeof(ArticleDetailDto))]
         public IHttpActionResult DeleteArticle(int id)
         {
             var article = _articleAppService.Find(id);

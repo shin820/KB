@@ -16,22 +16,17 @@ namespace KB.Dto
         public DtoMappings()
         {
             // Article
-            CreateMap<t_KB_Article, ArticleListResponse>();
-            CreateMap<t_KB_Article, ArticleDetailResponse>();
-            CreateMap<ArticleUpdateRequest, t_KB_Article>();
-            CreateMap<ArticleCreateRequest, t_KB_Article>();
+            CreateMap<t_KB_Article, ArticleDto>();
+            CreateMap<t_KB_Article, ArticleDetailDto>();
+            CreateMap<ArticleDto, t_KB_Article>();
 
             // KnowlgeBase
-            CreateMap<t_KB_KnowledgeBase, KBListResponse>();
-            CreateMap<t_KB_KnowledgeBase, KBDetailResponse>();
-            CreateMap<KBUpdateRequest, t_KB_KnowledgeBase>();
-            CreateMap<KBCreateRequest, t_KB_KnowledgeBase>();
+            CreateMap<t_KB_KnowledgeBase, KBDto>();
+            CreateMap<KBDto, t_KB_KnowledgeBase>();
 
             // Tag
-            CreateMap<t_KB_Tag, TagListResponse>();
-            CreateMap<t_KB_Tag, TagDetailResponse>();
-            CreateMap<TagUpdateRequest, t_KB_Tag>();
-            CreateMap<TagCreateRequest, t_KB_Tag>();
+            CreateMap<t_KB_Tag, TagDto>();
+            CreateMap<TagDto, t_KB_Tag>();
         }
     }
 }

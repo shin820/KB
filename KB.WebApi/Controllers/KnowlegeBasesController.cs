@@ -13,22 +13,22 @@ namespace KB.WebApi.Controllers
 {
     public class KnowlegeBasesController : ApiController
     {
-        private IKnowlegeBaseAppService _kbAppService;
+        private IKnowlegeBaseService _kbAppService;
 
-        public KnowlegeBasesController(IKnowlegeBaseAppService kbAppService)
+        public KnowlegeBasesController(IKnowlegeBaseService kbAppService)
         {
             _kbAppService = kbAppService;
         }
 
-        public IQueryable<KBListResponse> GetKnowlegeBases()
+        public IQueryable<KBDto> GetKnowlegeBases()
         {
             return _kbAppService.FindAll();
         }
 
-        [ResponseType(typeof(KBDetailResponse))]
+        [ResponseType(typeof(KBDto))]
         public IHttpActionResult GetKnowlegeBase(int id)
         {
-            KBDetailResponse kb = _kbAppService.Find(id);
+            KBDto kb = _kbAppService.Find(id);
             if (kb == null)
             {
                 return NotFound();
@@ -38,7 +38,7 @@ namespace KB.WebApi.Controllers
         }
 
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutKnowlegeBase(int id, KBUpdateRequest kb)
+        public IHttpActionResult PutKnowlegeBase(int id, KBDto kb)
         {
             if (!ModelState.IsValid)
             {
@@ -64,8 +64,8 @@ namespace KB.WebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [ResponseType(typeof(KBDetailResponse))]
-        public IHttpActionResult PostKnowlegeBase(KBCreateRequest createRequest)
+        [ResponseType(typeof(KBDto))]
+        public IHttpActionResult PostKnowlegeBase(KBDto createRequest)
         {
             if (!ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace KB.WebApi.Controllers
             return CreatedAtRoute("DefaultApi", new { id = kb.Id }, kb);
         }
 
-        [ResponseType(typeof(KBDetailResponse))]
+        [ResponseType(typeof(KBDto))]
         public IHttpActionResult DeleteKnowlegeBase(int id)
         {
             var kb = _kbAppService.Find(id);

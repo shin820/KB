@@ -1,20 +1,22 @@
-﻿using KB.Entity;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using KB.Dto.Article;
+using KB.Dto.Tag;
+using KB.Entity;
 using KB.Repository.Repositories;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace KB.DomainService.Article
+namespace KB.Service.AppServices
 {
-    public class ArticleService : IArticleService
+    public class ArticleAppService : IArticleAppService
     {
         private IArticleRepository _articleRepository;
         private ITagRepository _tagRepository;
         private IArticlesTagsRelationRepository _articleTagRelationRepository;
 
-        public ArticleService(
+
+        public ArticleAppService(
             IArticleRepository articleRepository,
             ITagRepository tagRepository,
             IArticlesTagsRelationRepository articleTagRelationRepository
@@ -25,19 +27,30 @@ namespace KB.DomainService.Article
             _articleTagRelationRepository = articleTagRelationRepository;
         }
 
-        public t_KB_Article Find(int id)
+        public ArticleDetailDto Find(int id)
         {
-            return _articleRepository.Find(id);
+            var article = _articleRepository.Find(id);
+            var articleDto = Mapper.Map<ArticleDetailDto>(article);
+            articleDto.Tags = _articleTagRelationRepository
+                 .FindAll()
+                 .Where(t => t.ArticleId == id)
+                 .Select(t => t.t_KB_Tag)
+                 .ProjectTo<TagDto>()
+                 .ToList();
+
+            return articleDto;
         }
 
-        public IQueryable<t_KB_Article> FindAll()
+        public IQueryable<ArticleDto> FindAll()
         {
-            return _articleRepository.FindAll().OrderByDescending(t => t.Id);
+            return _articleRepository.FindAll()
+                .OrderByDescending(t => t.Id)
+                .ProjectTo<ArticleDto>(); ;
         }
 
         public void Delete(int id)
         {
-            t_KB_Article article = this.Find(id);
+            t_KB_Article article = _articleRepository.Find(id);
             if (article != null)
             {
                 _articleRepository.Delete(article);
@@ -50,16 +63,25 @@ namespace KB.DomainService.Article
             }
         }
 
-        public void Update(t_KB_Article article)
+        public void Update(int id, ArticleDto articleDto)
         {
-            article.ModifiedTime = DateTime.UtcNow;
-            _articleRepository.Update(article);
+            t_KB_Article article = _articleRepository.Find(id);
+            if (article != null)
+            {
+                articleDto.Id = id;
+                article = Mapper.Map(articleDto, article);
+                article.ModifiedTime = DateTime.UtcNow;
+                _articleRepository.Update(article);
+            }
         }
 
-        public void Insert(t_KB_Article article)
+        public ArticleDto Insert(ArticleDto articleDto)
         {
+            t_KB_Article article = Mapper.Map<t_KB_Article>(articleDto);
             article.CreatedTime = DateTime.UtcNow;
             _articleRepository.Insert(article);
+
+            return Mapper.Map<ArticleDto>(article);
         }
 
         public void AddTag(int articleId, int tagId)
@@ -109,13 +131,6 @@ namespace KB.DomainService.Article
             {
                 _articleTagRelationRepository.Delete(relation);
             }
-        }
-
-        public IQueryable<t_KB_Tag> FindTags(int articleId)
-        {
-            return _articleTagRelationRepository
-                 .FindAll()
-                 .Where(t => t.ArticleId == articleId).Select(t => t.t_KB_Tag);
         }
     }
 }

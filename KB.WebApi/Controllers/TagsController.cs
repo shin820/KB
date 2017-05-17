@@ -11,22 +11,22 @@ namespace tag.WebApi.Controllers
 {
     public class TagsController : ApiController
     {
-        private ITagAppService _tagAppService;
+        private ITagService _tagAppService;
 
-        public TagsController(ITagAppService tagAppService)
+        public TagsController(ITagService tagAppService)
         {
             _tagAppService = tagAppService;
         }
 
-        public IQueryable<TagListResponse> GetTags()
+        public IQueryable<TagDto> GetTags()
         {
             return _tagAppService.FindAll();
         }
 
-        [ResponseType(typeof(TagDetailResponse))]
+        [ResponseType(typeof(TagDto))]
         public IHttpActionResult GetTag(int id)
         {
-            TagDetailResponse tag = _tagAppService.Find(id);
+            TagDto tag = _tagAppService.Find(id);
             if (tag == null)
             {
                 return NotFound();
@@ -36,7 +36,7 @@ namespace tag.WebApi.Controllers
         }
 
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutTag(int id, TagUpdateRequest tag)
+        public IHttpActionResult PutTag(int id, TagDto tag)
         {
             if (!ModelState.IsValid)
             {
@@ -62,8 +62,8 @@ namespace tag.WebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [ResponseType(typeof(TagDetailResponse))]
-        public IHttpActionResult PostTag(TagCreateRequest createRequest)
+        [ResponseType(typeof(TagDto))]
+        public IHttpActionResult PostTag(TagDto createRequest)
         {
             if (!ModelState.IsValid)
             {
@@ -75,7 +75,7 @@ namespace tag.WebApi.Controllers
             return CreatedAtRoute("DefaultApi", new { id = tag.Id }, tag);
         }
 
-        [ResponseType(typeof(TagDetailResponse))]
+        [ResponseType(typeof(TagDto))]
         public IHttpActionResult DeleteTag(int id)
         {
             var tag = _tagAppService.Find(id);

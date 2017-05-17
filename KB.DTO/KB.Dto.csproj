@@ -44,20 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Article\ArticleCreateRequest.cs" />
-    <Compile Include="Article\ArticleDetailResponse.cs" />
-    <Compile Include="Article\ArticleListResponse.cs" />
-    <Compile Include="Article\ArticleUpdateRequest.cs" />
+    <Compile Include="Article\ArticleDto.cs" />
+    <Compile Include="Article\ArticleDetailDto.cs" />
     <Compile Include="DtoMappings.cs" />
-    <Compile Include="KB\KBCreateRequest.cs" />
-    <Compile Include="KB\KBDetailResponse.cs" />
-    <Compile Include="KB\KBListResponse.cs" />
-    <Compile Include="KB\KBUpdateRequest.cs" />
+    <Compile Include="KB\KBDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tag\TagCreateRequest.cs" />
-    <Compile Include="Tag\TagDetailResponse.cs" />
-    <Compile Include="Tag\TagListResponse.cs" />
-    <Compile Include="Tag\TagUpdateRequest.cs" />
+    <Compile Include="Tag\TagDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

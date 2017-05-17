@@ -6,10 +6,10 @@ namespace KB.Service.AppServices
     public interface IArticleAppService
     {
         void Delete(int id);
-        ArticleDetailResponse Find(int id);
-        IQueryable<ArticleListResponse> FindAll();
-        ArticleDetailResponse Insert(ArticleCreateRequest createRequest);
-        void Update(int id, ArticleUpdateRequest updateRequest);
+        ArticleDetailDto Find(int id);
+        IQueryable<ArticleDto> FindAll();
+        ArticleDto Insert(ArticleDto createRequest);
+        void Update(int id, ArticleDto updateRequest);
         void AddTag(int articleId, int tagId);
         void RemoveTag(int articleId, int tagId);
     }

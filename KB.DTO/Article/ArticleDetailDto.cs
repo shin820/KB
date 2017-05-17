@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KB.Dto.Tag;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,19 +8,16 @@ using System.Threading.Tasks;
 
 namespace KB.Dto.Article
 {
-    public class ArticleCreateRequest
+    public class ArticleDetailDto
     {
-        [Required]
+        public int Id { get; set; }
+
         public int KBId { get; set; }
 
-        [Required]
         public int SiteId { get; set; }
 
-        [Required]
         public string Body { get; set; }
 
-        [Required]
-        [StringLength(1024)]
         public string CustomURL { get; set; }
 
         public int CategoryId { get; set; }
@@ -28,13 +26,14 @@ namespace KB.Dto.Article
 
         public short Status { get; set; }
 
-        [Required]
-        [StringLength(2048)]
         public string Title { get; set; }
 
-        [StringLength(256)]
+        public int? Views { get; set; }
+
         public string Name { get; set; }
 
         public int? Index { get; set; }
+
+        public List<TagDto> Tags { get; set; }
     }
 }
