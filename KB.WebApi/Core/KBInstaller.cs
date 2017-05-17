@@ -1,14 +1,14 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using KB.BusinessService;
 
-namespace KB.Infrastructure.Ioc
+namespace KB.WebApi.Core
 {
     public class KBInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.AddFacility<RepositoryIocFacility>();
             container.AddFacility<BusinessServiceIocFacility>();
         }
     }

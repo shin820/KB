@@ -63,6 +63,7 @@
     <Compile Include="Repositories\KnowlegeBaseRepository.cs" />
     <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="RepositoryBase.cs" />
+    <Compile Include="RepositoryIocInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

@@ -2,13 +2,13 @@
 using Castle.MicroKernel.Facilities;
 using Castle.MicroKernel.Registration;
 
-namespace KB.Infrastructure.Ioc
+namespace KB.Repository
 {
-    public class RepositoryIocFacility : AbstractFacility
+    public class RepositoryIocInitializer
     {
-        protected override void Init()
+        public static void Init(IKernel kernel)
         {
-            Kernel.Register(Classes.FromAssemblyNamed("KB.Entity").Pick().If(t=>t.Name== "KBDataContext")
+            kernel.Register(Classes.FromAssemblyNamed("KB.Entity").Pick().If(t=>t.Name== "KBDataContext")
                                      .LifestylePerWebRequest(),
                             //Component.For(typeof(IRepositoryBase<>))
                             //         .ImplementedBy(typeof(RepositoryBase<>))

@@ -77,9 +77,6 @@
     <Compile Include="Authentication\RefreshToken.cs" />
     <Compile Include="Authentication\RefreshTokenProvider.cs" />
     <Compile Include="ErrorInfo.cs" />
-    <Compile Include="Ioc\KBInstaller.cs" />
-    <Compile Include="Ioc\RepositoryIocFacility.cs" />
-    <Compile Include="Ioc\BusinessServiceIocFacility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Runtime\Checker.cs" />
     <Compile Include="Runtime\Security\ClaimsIdentityExtensions.cs" />
