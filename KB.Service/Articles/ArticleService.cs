@@ -3,9 +3,11 @@ using AutoMapper.QueryableExtensions;
 using KB.Object.Articles;
 using KB.Object.Tags;
 using KB.Entity;
-using KB.Repository.Repositories;
+using KB.Repository.Articles;
+using KB.Repository.Tags;
 using System;
 using System.Linq;
+using System.Transactions;
 
 namespace KB.BizService.Articles
 {
@@ -50,16 +52,21 @@ namespace KB.BizService.Articles
 
         public void Delete(int id)
         {
-            t_KB_Article article = _articleRepository.Find(id);
-            if (article != null)
+            using (TransactionScope transactionScope = new TransactionScope())
             {
-                _articleRepository.Delete(article);
-            }
+                t_KB_Article article = _articleRepository.Find(id);
+                if (article != null)
+                {
+                    _articleRepository.Delete(article);
+                }
 
-            var relations = _articleTagRelationRepository.FindAll().Where(t => t.ArticleId == id);
-            foreach (var relation in relations)
-            {
-                _articleTagRelationRepository.Delete(relation);
+                var relations = _articleTagRelationRepository.FindAll().Where(t => t.ArticleId == id);
+                foreach (var relation in relations)
+                {
+                    _articleTagRelationRepository.Delete(relation);
+                }
+
+                transactionScope.Complete();
             }
         }
 
@@ -68,8 +75,8 @@ namespace KB.BizService.Articles
             t_KB_Article article = _articleRepository.Find(id);
             if (article != null)
             {
-                articleDto.Id = id;
                 article = Mapper.Map(articleDto, article);
+                article.Id = id;
                 article.ModifiedTime = DateTime.UtcNow;
                 _articleRepository.Update(article);
             }
@@ -96,11 +103,6 @@ namespace KB.BizService.Articles
             {
                 throw new ArgumentException("Invalid tag id.");
             }
-
-            //if (article.KBId != tag.KBId)
-            //{
-            //    throw new InvalidOperationException("Article and tag should belong to the same KB.");
-            //}
 
             bool isExisted = _articleTagRelationRepository.FindAll()
                 .Any(t => t.ArticleId == article.Id && t.TagId == tag.Id);

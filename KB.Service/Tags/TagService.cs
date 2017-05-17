@@ -2,7 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using KB.Object.Tags;
 using KB.Entity;
-using KB.Repository.Repositories;
+using KB.Repository.Tags;
 using System;
 using System.Linq;
 
@@ -43,8 +43,8 @@ namespace KB.BizService.Tags
             t_KB_Tag tag = _repository.Find(id);
             if (tag != null)
             {
-                tagDto.Id = id;
                 tag = Mapper.Map(tagDto, tag);
+                tag.Id = id;
                 _repository.Update(tag);
             }
         }

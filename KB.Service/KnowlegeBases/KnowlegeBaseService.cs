@@ -2,7 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using KB.Object.KB;
 using KB.Entity;
-using KB.Repository.Repositories;
+using KB.Repository.KnowlegeBases;
 using System.Linq;
 
 namespace KB.BizService.KnowlegeBases
@@ -27,7 +27,7 @@ namespace KB.BizService.KnowlegeBases
         {
             return _repository.FindAll()
                 .OrderByDescending(t => t.Id)
-                .ProjectTo<KnowlegeBase>(); ;
+                .ProjectTo<KnowlegeBase>();
         }
 
         public void Delete(int id)
@@ -44,8 +44,8 @@ namespace KB.BizService.KnowlegeBases
             t_KB_KnowledgeBase kb = _repository.Find(id);
             if (kb != null)
             {
-                kbDto.Id = id;
                 kb = Mapper.Map(kbDto, kb);
+                kb.Id = id;
                 _repository.Update(kb);
             }
         }
