@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\KBDataContext.cs" />
     <Compile Include="KBDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="t_KB_Article.cs" />

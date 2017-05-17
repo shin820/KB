@@ -45,7 +45,7 @@ namespace KB.Service.AppServices
         {
             return _articleRepository.FindAll()
                 .OrderByDescending(t => t.Id)
-                .ProjectTo<ArticleDto>(); ;
+                .ProjectTo<ArticleDto>();
         }
 
         public void Delete(int id)
