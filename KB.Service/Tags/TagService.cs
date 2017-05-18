@@ -16,17 +16,15 @@ namespace KB.BizService.Tags
             _repository = repository;
         }
 
-        public Tag Find(int id)
+        public t_KB_Tag Find(int id)
         {
-            var tag = _repository.Find(id);
-            return Mapper.Map<Tag>(tag);
+            return _repository.Find(id);
         }
 
-        public IQueryable<Tag> FindAll()
+        public IQueryable<t_KB_Tag> FindAll()
         {
             return _repository.FindAll()
-                .OrderByDescending(t => t.Id)
-                .ProjectTo<Tag>(); ;
+                .OrderByDescending(t => t.Id);
         }
 
         public void Delete(int id)
@@ -38,25 +36,17 @@ namespace KB.BizService.Tags
             }
         }
 
-        public void Update(int id, Tag tagDto)
+        public void Update(t_KB_Tag tag)
         {
-            t_KB_Tag tag = _repository.Find(id);
-            if (tag != null)
-            {
-                tag = Mapper.Map(tagDto, tag);
-                tag.Id = id;
-                _repository.Update(tag);
-            }
+            _repository.Update(tag);
         }
 
-        public Tag Insert(Tag tagDto)
+        public t_KB_Tag Insert(t_KB_Tag tag)
         {
-            t_KB_Tag tag = Mapper.Map<t_KB_Tag>(tagDto);
-
             tag.CreatedTime = DateTime.UtcNow;
             _repository.Insert(tag);
 
-            return Mapper.Map<Tag>(tag);
+            return tag;
         }
     }
 }

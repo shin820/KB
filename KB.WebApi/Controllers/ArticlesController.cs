@@ -4,16 +4,16 @@ using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 using KB.Object.Articles;
-using KB.BizService.Articles;
+using KB.Process.Articles;
 
 namespace KB.WebApi.Controllers
 {
     [RoutePrefix("api/articles")]
     public class ArticlesController : ApiController
     {
-        private IArticleService _articleService;
+        private IArticleProcess _articleService;
 
-        public ArticlesController(IArticleService articleService)
+        public ArticlesController(IArticleProcess articleService)
         {
             _articleService = articleService;
         }

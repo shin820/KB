@@ -29,25 +29,15 @@ namespace KB.BizService.Articles
             _articleTagRelationRepository = articleTagRelationRepository;
         }
 
-        public ArticleDetail Find(int id)
+        public t_KB_Article Find(int id)
         {
-            var article = _articleRepository.Find(id);
-            var articleDto = Mapper.Map<ArticleDetail>(article);
-            articleDto.Tags = _articleTagRelationRepository
-                 .FindAll()
-                 .Where(t => t.ArticleId == id)
-                 .Select(t => t.t_KB_Tag)
-                 .ProjectTo<Tag>()
-                 .ToList();
-
-            return articleDto;
+            return _articleRepository.Find(id);
         }
 
-        public IQueryable<Article> FindAll()
+        public IQueryable<t_KB_Article> FindAll()
         {
             return _articleRepository.FindAll()
-                .OrderByDescending(t => t.Id)
-                .ProjectTo<Article>();
+                .OrderByDescending(t => t.Id);
         }
 
         public void Delete(int id)
@@ -70,25 +60,18 @@ namespace KB.BizService.Articles
             }
         }
 
-        public void Update(int id, Article articleDto)
+        public void Update(t_KB_Article article)
         {
-            t_KB_Article article = _articleRepository.Find(id);
-            if (article != null)
-            {
-                article = Mapper.Map(articleDto, article);
-                article.Id = id;
-                article.ModifiedTime = DateTime.UtcNow;
-                _articleRepository.Update(article);
-            }
+            article.ModifiedTime = DateTime.UtcNow;
+            _articleRepository.Update(article);
         }
 
-        public Article Insert(Article articleDto)
+        public t_KB_Article Insert(t_KB_Article article)
         {
-            t_KB_Article article = Mapper.Map<t_KB_Article>(articleDto);
             article.CreatedTime = DateTime.UtcNow;
             _articleRepository.Insert(article);
 
-            return Mapper.Map<Article>(article);
+            return article;
         }
 
         public void AddTag(int articleId, int tagId)

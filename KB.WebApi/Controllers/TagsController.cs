@@ -4,15 +4,15 @@ using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 using KB.Object.Tags;
-using KB.BizService.Tags;
+using KB.Process.Tags;
 
 namespace tag.WebApi.Controllers
 {
     public class TagsController : ApiController
     {
-        private ITagService _tagAppService;
+        private ITagProcess _tagAppService;
 
-        public TagsController(ITagService tagAppService)
+        public TagsController(ITagProcess tagAppService)
         {
             _tagAppService = tagAppService;
         }

@@ -17,17 +17,15 @@ namespace KB.BizService.KnowlegeBases
             _repository = repository;
         }
 
-        public KnowlegeBase Find(int id)
+        public t_KB_KnowledgeBase Find(int id)
         {
-            var article = _repository.Find(id);
-            return Mapper.Map<KnowlegeBase>(article);
+            return _repository.Find(id);
         }
 
-        public IQueryable<KnowlegeBase> FindAll()
+        public IQueryable<t_KB_KnowledgeBase> FindAll()
         {
             return _repository.FindAll()
-                .OrderByDescending(t => t.Id)
-                .ProjectTo<KnowlegeBase>();
+                .OrderByDescending(t => t.Id);
         }
 
         public void Delete(int id)
@@ -39,23 +37,15 @@ namespace KB.BizService.KnowlegeBases
             }
         }
 
-        public void Update(int id, KnowlegeBase kbDto)
+        public void Update(t_KB_KnowledgeBase kb)
         {
-            t_KB_KnowledgeBase kb = _repository.Find(id);
-            if (kb != null)
-            {
-                kb = Mapper.Map(kbDto, kb);
-                kb.Id = id;
-                _repository.Update(kb);
-            }
+            _repository.Update(kb);
         }
 
-        public KnowlegeBase Insert(KnowlegeBase kbDto)
+        public t_KB_KnowledgeBase Insert(t_KB_KnowledgeBase kb)
         {
-            t_KB_KnowledgeBase kb = Mapper.Map<t_KB_KnowledgeBase>(kbDto);
             _repository.Insert(kb);
-
-            return Mapper.Map<KnowlegeBase>(kb);
+            return kb;
         }
     }
 }

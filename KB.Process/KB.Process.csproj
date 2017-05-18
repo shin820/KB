@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7F485985-BA40-4B9D-A0A9-63486C82F0AF}</ProjectGuid>
+    <ProjectGuid>{349CD324-CB06-46E7-97F1-33AF7EA446FF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KB.BizService</RootNamespace>
-    <AssemblyName>KB.BizService</AssemblyName>
+    <RootNamespace>KB.Process</RootNamespace>
+    <AssemblyName>KB.Process</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,7 +41,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,18 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Articles\ArticleService.cs" />
-    <Compile Include="Articles\IArticleService.cs" />
-    <Compile Include="BusinessServiceIocInitilizer.cs" />
-    <Compile Include="KnowlegeBases\IKnowlegeBaseService.cs" />
-    <Compile Include="KnowlegeBases\KnowlegeBaseService.cs" />
+    <Compile Include="Articles\ArticleProcess.cs" />
+    <Compile Include="Articles\IArticleProcess.cs" />
+    <Compile Include="ProcessIocFacility.cs" />
+    <Compile Include="KnowlegeBases\IKnowlegeBaseProcess.cs" />
+    <Compile Include="KnowlegeBases\KnowlegeBaseProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tags\ITagService.cs" />
-    <Compile Include="Tags\TagService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
+    <Compile Include="Tags\ITagProcess.cs" />
+    <Compile Include="Tags\TagProcess.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KB.DTO\KB.Object.csproj">
@@ -73,14 +67,14 @@
       <Project>{fb079767-3df2-435c-89d3-e15f3d975098}</Project>
       <Name>KB.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KB.Infrastructure\KB.Framework.csproj">
-      <Project>{fe79d2df-6b23-4278-9c84-fc1d6487c45b}</Project>
-      <Name>KB.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\KB.Repository\KB.Repository.csproj">
-      <Project>{4f7dbfec-3a4e-410c-9c32-d092e50aaa7b}</Project>
-      <Name>KB.Repository</Name>
+    <ProjectReference Include="..\KB.Service\KB.BizService.csproj">
+      <Project>{7f485985-ba40-4b9d-a0a9-63486c82f0af}</Project>
+      <Name>KB.BizService</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

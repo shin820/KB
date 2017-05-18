@@ -334,9 +334,9 @@
       <Project>{fe79d2df-6b23-4278-9c84-fc1d6487c45b}</Project>
       <Name>KB.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KB.Service\KB.BizService.csproj">
-      <Project>{7f485985-ba40-4b9d-a0a9-63486c82f0af}</Project>
-      <Name>KB.BizService</Name>
+    <ProjectReference Include="..\KB.Process\KB.Process.csproj">
+      <Project>{349cd324-cb06-46e7-97f1-33af7ea446ff}</Project>
+      <Name>KB.Process</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
