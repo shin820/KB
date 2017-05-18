@@ -4,13 +4,7 @@ namespace KB.Object.KB
 {
     public class KnowlegeBase
     {
-        public KnowlegeBase(int id,int siteId)
-        {
-            this.Id = id;
-            this.SiteId = siteId;
-        }
-
-        public int Id { get; }
+        public int Id { get; set; }
 
         public int KnowledgebaseHomePage { get; set; }
 

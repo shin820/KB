@@ -16,20 +16,16 @@ namespace KB.Object
         public DtoMappings()
         {
             // Article
-            CreateMap<t_KB_Article, Article>()
-                .ConstructUsing(s => new Article(s.Id, s.SiteId));
-            CreateMap<t_KB_Article, ArticleDetail>()
-                .ConstructUsing(s => new ArticleDetail(s.Id, s.SiteId));
+            CreateMap<t_KB_Article, Article>();
+            CreateMap<t_KB_Article, ArticleDetail>();
             CreateMap<Article, t_KB_Article>();
 
             // KnowlgeBase
-            CreateMap<t_KB_KnowledgeBase, KnowlegeBase>()
-                .ConstructUsing(s => new KnowlegeBase(s.Id, s.SiteId));
+            CreateMap<t_KB_KnowledgeBase, KnowlegeBase>();
             CreateMap<KnowlegeBase, t_KB_KnowledgeBase>();
 
             // Tag
-            CreateMap<t_KB_Tag, Tag>()
-                .ConstructUsing(s => new Tag(s.Id, s.SiteId));
+            CreateMap<t_KB_Tag, Tag>();
             CreateMap<Tag, t_KB_Tag>();
         }
     }

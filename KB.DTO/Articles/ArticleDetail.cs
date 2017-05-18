@@ -5,13 +5,7 @@ namespace KB.Object.Articles
 {
     public class ArticleDetail
     {
-        public ArticleDetail(int id, int SiteId)
-        {
-            this.Id = id;
-            this.SiteId = SiteId;
-        }
-
-        public int Id { get; }
+        public int Id { get; set; }
 
         public int KBId { get; set; }
 
