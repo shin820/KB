@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.WebApi", "KB.WebApi\KB.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Infrastructure", "KB.Infrastructure\KB.Infrastructure.csproj", "{FE79D2DF-6B23-4278-9C84-FC1D6487C45B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Application", "KB.ApplicationService\KB.Application.csproj", "{349CD324-CB06-46E7-97F1-33AF7EA446FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Application", "KB.Application\KB.Application.csproj", "{349CD324-CB06-46E7-97F1-33AF7EA446FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Domain", "KB.DomainService\KB.Domain.csproj", "{7F485985-BA40-4B9D-A0A9-63486C82F0AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Domain", "KB.Domain\KB.Domain.csproj", "{7F485985-BA40-4B9D-A0A9-63486C82F0AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -30,7 +30,7 @@ namespace KB.WebApi
 
             Mapper.Initialize(cfg =>
                 cfg.AddProfiles(new[] {
-                    "KB.ApplicationService"
+                    "KB.Application"
                 })
             );
 

@@ -9,4 +9,5 @@ obj/
 bin/
 
 packages/
-/KB.WebApi/App_Data/
+*.log
+*.2017-05-18

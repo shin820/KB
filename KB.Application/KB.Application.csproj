@@ -65,7 +65,7 @@
     <Compile Include="Services\TagAppService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KB.DomainService\KB.Domain.csproj">
+    <ProjectReference Include="..\KB.Domain\KB.Domain.csproj">
       <Project>{7f485985-ba40-4b9d-a0a9-63486c82f0af}</Project>
       <Name>KB.Domain</Name>
     </ProjectReference>
