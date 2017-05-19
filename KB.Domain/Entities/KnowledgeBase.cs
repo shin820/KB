@@ -8,10 +8,10 @@ namespace KB.Domain.Entities
         {
             Articles = new HashSet<Article>();
             Categorys = new HashSet<Category>();
-            Tags= new HashSet<Tag>();
+            Tags = new HashSet<Tag>();
         }
 
-        public int Id { get; set; }
+        public int Id { get; private set; }
 
         public int KnowledgebaseHomePage { get; set; }
 

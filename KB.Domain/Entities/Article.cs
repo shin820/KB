@@ -2,15 +2,16 @@ namespace KB.Domain.Entities
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Article : KBEntity
     {
         public Article()
         {
-            ArticleTags = new HashSet<ArticleTags>();
+            ArticleTags = new List<ArticleTags>();
         }
 
-        public int Id { get; set; }
+        public int Id { get; private set; }
 
         public string Body { get; set; }
 
@@ -28,7 +29,7 @@ namespace KB.Domain.Entities
 
         public DateTime? ModifiedTime { get; set; }
 
-        public short Status { get; set; }
+        public short Status { get; private set; }
 
         public string Title { get; set; }
 
@@ -38,8 +39,30 @@ namespace KB.Domain.Entities
 
         public int? Index { get; set; }
 
-        public virtual ICollection<ArticleTags> ArticleTags { get; set; }
+        public virtual IList<ArticleTags> ArticleTags { get; set; }
 
         public virtual KnowledgeBase KnowledgeBase { get; set; }
+
+        public void AddTag(int tagId)
+        {
+            ArticleTags.Add(
+                new ArticleTags
+                {
+                    ArticleId = Id,
+                    TagId = tagId,
+                    KBId = KBId,
+                    SiteId = SiteId
+                });
+        }
+
+        public void RemoveTag(int tagId)
+        {
+            var tag = this.ArticleTags
+                .FirstOrDefault(t => t.ArticleId == this.Id && t.TagId == tagId);
+            if (tag != null)
+            {
+                this.ArticleTags.Remove(tag);
+            }
+        }
     }
 }

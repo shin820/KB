@@ -9,7 +9,7 @@ namespace KB.Domain.Entities
             KnowledgeBases = new HashSet<KnowledgeBase>();
         }
 
-        public int Id { get; set; }
+        public int Id { get; private set; }
 
         public string Address { get; set; }
 

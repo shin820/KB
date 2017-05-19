@@ -39,7 +39,6 @@ namespace KB.Application.Services
             KnowledgeBase kb = _service.Find(id);
             if (kb != null)
             {
-                kb.Id = id;
                 kb = Mapper.Map(kbDto, kb);
                 _service.Update(kb);
             }

@@ -10,7 +10,7 @@ namespace KB.Domain.Entities
             ArticleTags = new HashSet<ArticleTags>();
         }
 
-        public int Id { get; set; }
+        public int Id { get; private set; }
 
         public int CreatedBy { get; set; }
 
