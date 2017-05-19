@@ -17,12 +17,12 @@ namespace KB.BizService.KnowlegeBases
             _repository = repository;
         }
 
-        public t_KB_KnowledgeBase Find(int id)
+        public KnowledgeBase Find(int id)
         {
             return _repository.Find(id);
         }
 
-        public IQueryable<t_KB_KnowledgeBase> FindAll()
+        public IQueryable<KnowledgeBase> FindAll()
         {
             return _repository.FindAll()
                 .OrderByDescending(t => t.Id);
@@ -30,19 +30,19 @@ namespace KB.BizService.KnowlegeBases
 
         public void Delete(int id)
         {
-            t_KB_KnowledgeBase kb = _repository.Find(id);
+            KnowledgeBase kb = _repository.Find(id);
             if (kb != null)
             {
                 _repository.Delete(kb);
             }
         }
 
-        public void Update(t_KB_KnowledgeBase kb)
+        public void Update(KnowledgeBase kb)
         {
             _repository.Update(kb);
         }
 
-        public t_KB_KnowledgeBase Insert(t_KB_KnowledgeBase kb)
+        public KnowledgeBase Insert(KnowledgeBase kb)
         {
             _repository.Insert(kb);
             return kb;

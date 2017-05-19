@@ -29,12 +29,12 @@ namespace KB.BizService.Articles
             _articleTagRelationRepository = articleTagRelationRepository;
         }
 
-        public t_KB_Article Find(int id)
+        public Article Find(int id)
         {
             return _articleRepository.Find(id);
         }
 
-        public IQueryable<t_KB_Article> FindAll()
+        public IQueryable<Article> FindAll()
         {
             return _articleRepository.FindAll()
                 .OrderByDescending(t => t.Id);
@@ -44,7 +44,7 @@ namespace KB.BizService.Articles
         {
             using (TransactionScope transactionScope = new TransactionScope())
             {
-                t_KB_Article article = _articleRepository.Find(id);
+                Article article = _articleRepository.Find(id);
                 if (article != null)
                 {
                     _articleRepository.Delete(article);
@@ -60,13 +60,13 @@ namespace KB.BizService.Articles
             }
         }
 
-        public void Update(t_KB_Article article)
+        public void Update(Article article)
         {
             article.ModifiedTime = DateTime.UtcNow;
             _articleRepository.Update(article);
         }
 
-        public t_KB_Article Insert(t_KB_Article article)
+        public Article Insert(Article article)
         {
             article.CreatedTime = DateTime.UtcNow;
             _articleRepository.Insert(article);
@@ -76,12 +76,12 @@ namespace KB.BizService.Articles
 
         public void AddTag(int articleId, int tagId)
         {
-            t_KB_Article article = _articleRepository.Find(articleId);
+            Article article = _articleRepository.Find(articleId);
             if (article == null)
             {
                 throw new ArgumentException("Invalid article id.");
             }
-            t_KB_Tag tag = _tagRepository.Find(tagId);
+            Tag tag = _tagRepository.Find(tagId);
             if (tag == null)
             {
                 throw new ArgumentException("Invalid tag id.");
@@ -94,7 +94,7 @@ namespace KB.BizService.Articles
                 throw new InvalidOperationException("Relation existed.");
             }
 
-            var relateion = new t_KB_ArticlesTagsRelation
+            var relateion = new ArticleTags
             {
                 ArticleId = article.Id,
                 TagId = tag.Id,
@@ -107,7 +107,7 @@ namespace KB.BizService.Articles
 
         public void RemoveTag(int articleId, int tagId)
         {
-            t_KB_ArticlesTagsRelation relation = _articleTagRelationRepository
+            ArticleTags relation = _articleTagRelationRepository
                 .FindAll()
                 .Where(t => t.ArticleId == articleId && t.TagId == tagId)
                 .FirstOrDefault();

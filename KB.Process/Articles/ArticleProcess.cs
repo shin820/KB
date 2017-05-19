@@ -22,10 +22,10 @@ namespace KB.Process.Articles
             return articleDto;
         }
 
-        public IQueryable<Article> FindAll()
+        public IQueryable<ArticleInfo> FindAll()
         {
             return _articleService.FindAll()
-                .ProjectTo<Article>();
+                .ProjectTo<ArticleInfo>();
         }
 
         public void Delete(int id)
@@ -33,9 +33,9 @@ namespace KB.Process.Articles
             _articleService.Delete(id);
         }
 
-        public void Update(int id, Article articleDto)
+        public void Update(int id, ArticleInfo articleDto)
         {
-            t_KB_Article article = _articleService.Find(id);
+            Article article = _articleService.Find(id);
             if (article != null)
             {
                 articleDto.Id = id;
@@ -44,12 +44,12 @@ namespace KB.Process.Articles
             }
         }
 
-        public Article Insert(Article articleDto)
+        public ArticleInfo Insert(ArticleInfo articleDto)
         {
-            t_KB_Article article = Mapper.Map<t_KB_Article>(articleDto);
+            Article article = Mapper.Map<Article>(articleDto);
             _articleService.Insert(article);
 
-            return Mapper.Map<Article>(article);
+            return Mapper.Map<ArticleInfo>(article);
         }
 
         public void AddTag(int articleId, int tagId)

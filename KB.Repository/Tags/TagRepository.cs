@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KB.Repository.Tags
 {
-    public class TagRepository : RepositoryBase<t_KB_Tag>, ITagRepository
+    public class TagRepository : RepositoryBase<Tag>, ITagRepository
     {
         public TagRepository(DbContext dbContext) : base(dbContext)
         {

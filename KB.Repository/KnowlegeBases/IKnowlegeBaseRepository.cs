@@ -2,7 +2,7 @@
 
 namespace KB.Repository.KnowlegeBases
 {
-    public interface IKnowlegeBaseRepository : IRepositoryBase<t_KB_KnowledgeBase>
+    public interface IKnowlegeBaseRepository : IRepositoryBase<KnowledgeBase>
     {
 
     }

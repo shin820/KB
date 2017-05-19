@@ -7,9 +7,9 @@ namespace KB.BizService.KnowlegeBases
     public interface IKnowlegeBaseService
     {
         void Delete(int id);
-        t_KB_KnowledgeBase Find(int id);
-        IQueryable<t_KB_KnowledgeBase> FindAll();
-        t_KB_KnowledgeBase Insert(t_KB_KnowledgeBase kb);
-        void Update(t_KB_KnowledgeBase kb);
+        KnowledgeBase Find(int id);
+        IQueryable<KnowledgeBase> FindAll();
+        KnowledgeBase Insert(KnowledgeBase kb);
+        void Update(KnowledgeBase kb);
     }
 }

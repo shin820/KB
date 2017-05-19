@@ -2,7 +2,7 @@
 
 namespace KB.Object.KB
 {
-    public class KnowlegeBase
+    public class KnowlegeBaseInfo
     {
         public int Id { get; set; }
 

@@ -17,16 +17,16 @@ namespace KB.Process.KnowlegeBases
             _service = service;
         }
 
-        public KnowlegeBase Find(int id)
+        public KnowlegeBaseInfo Find(int id)
         {
             var article = _service.Find(id);
-            return Mapper.Map<KnowlegeBase>(article);
+            return Mapper.Map<KnowlegeBaseInfo>(article);
         }
 
-        public IQueryable<KnowlegeBase> FindAll()
+        public IQueryable<KnowlegeBaseInfo> FindAll()
         {
             return _service.FindAll()
-                .ProjectTo<KnowlegeBase>();
+                .ProjectTo<KnowlegeBaseInfo>();
         }
 
         public void Delete(int id)
@@ -34,9 +34,9 @@ namespace KB.Process.KnowlegeBases
             _service.Delete(id);
         }
 
-        public void Update(int id, KnowlegeBase kbDto)
+        public void Update(int id, KnowlegeBaseInfo kbDto)
         {
-            t_KB_KnowledgeBase kb = _service.Find(id);
+            KnowledgeBase kb = _service.Find(id);
             if (kb != null)
             {
                 kb.Id = id;
@@ -45,12 +45,12 @@ namespace KB.Process.KnowlegeBases
             }
         }
 
-        public KnowlegeBase Insert(KnowlegeBase kbDto)
+        public KnowlegeBaseInfo Insert(KnowlegeBaseInfo kbDto)
         {
-            t_KB_KnowledgeBase kb = Mapper.Map<t_KB_KnowledgeBase>(kbDto);
+            KnowledgeBase kb = Mapper.Map<KnowledgeBase>(kbDto);
             _service.Insert(kb);
 
-            return Mapper.Map<KnowlegeBase>(kb);
+            return Mapper.Map<KnowlegeBaseInfo>(kb);
         }
     }
 }

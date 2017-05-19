@@ -52,22 +52,14 @@
   <ItemGroup>
     <Compile Include="Extensions\KBDataContext.cs" />
     <Compile Include="KBDataContext.cs" />
+    <Compile Include="KBEntityBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="t_KB_Article.cs" />
-    <Compile Include="t_KB_ArticleIdea.cs" />
-    <Compile Include="t_KB_ArticlesTagsRelation.cs" />
-    <Compile Include="t_KB_Category.cs" />
-    <Compile Include="t_KB_Comm100System.cs" />
-    <Compile Include="t_KB_Image.cs" />
-    <Compile Include="t_KB_KnowledgeBase.cs" />
-    <Compile Include="t_KB_OptimizationIdea.cs" />
-    <Compile Include="t_KB_PageTemplate.cs" />
-    <Compile Include="t_KB_RateArticle.cs" />
-    <Compile Include="t_KB_RateArticleDetail.cs" />
-    <Compile Include="t_KB_Tag.cs" />
-    <Compile Include="t_KB_ViewArticleHistory.cs" />
-    <Compile Include="t_LiveChat_KBIntegration.cs" />
-    <Compile Include="t_ViewHistory_SiteId_.cs" />
+    <Compile Include="Article.cs" />
+    <Compile Include="ArticleTags.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Comm100System.cs" />
+    <Compile Include="KnowledgeBase.cs" />
+    <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

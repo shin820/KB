@@ -9,3 +9,4 @@ obj/
 bin/
 
 packages/
+/KB.WebApi/App_Data

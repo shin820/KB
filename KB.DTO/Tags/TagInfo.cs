@@ -2,7 +2,7 @@
 
 namespace KB.Object.Tags
 {
-    public class Tag
+    public class TagInfo
     {
         public int Id { get; set; }
 

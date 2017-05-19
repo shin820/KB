@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KB.Repository.KnowlegeBases
 {
-    public class KnowlegeBaseRepository : RepositoryBase<t_KB_KnowledgeBase>, IKnowlegeBaseRepository
+    public class KnowlegeBaseRepository : RepositoryBase<KnowledgeBase>, IKnowlegeBaseRepository
     {
         public KnowlegeBaseRepository(DbContext dbContext) : base(dbContext)
         {

@@ -44,12 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Articles\Article.cs" />
+    <Compile Include="Articles\ArticleInfo.cs" />
     <Compile Include="Articles\ArticleDetail.cs" />
     <Compile Include="DtoMappings.cs" />
-    <Compile Include="KB\KnowlegeBase.cs" />
+    <Compile Include="KB\KnowlegeBaseInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tags\Tag.cs" />
+    <Compile Include="Tags\TagInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

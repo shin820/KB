@@ -17,12 +17,12 @@ namespace KB.UnitTest.BizService
         public void ShouldDeleleteTags_WhenDeleteArticle()
         {
             // assign
-            var article = new t_KB_Article
+            var article = new Article
             {
                 Id = 1,
-                t_KB_ArticlesTagsRelation = new HashSet<t_KB_ArticlesTagsRelation>
+                ArticleTags = new HashSet<ArticleTags>
                 {
-                    new t_KB_ArticlesTagsRelation{ArticleId=1,TagId=1}
+                    new ArticleTags{ArticleId=1,TagId=1}
                 }
             };
             var articleRepositoryMock = new Mock<IArticleRepository>();
@@ -38,7 +38,7 @@ namespace KB.UnitTest.BizService
             articleService.Delete(article.Id);
 
             // assert
-            articleTagRelationMock.Verify(t => t.Delete(article.t_KB_ArticlesTagsRelation.First()));
+            articleTagRelationMock.Verify(t => t.Delete(article.ArticleTags.First()));
         }
     }
 }

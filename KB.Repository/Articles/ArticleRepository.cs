@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KB.Repository.Articles
 {
-    public class ArticleRepository : RepositoryBase<t_KB_Article>, IArticleRepository
+    public class ArticleRepository : RepositoryBase<Article>, IArticleRepository
     {
         public ArticleRepository(DbContext dbContext) : base(dbContext)
         {

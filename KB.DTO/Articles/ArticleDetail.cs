@@ -29,6 +29,6 @@ namespace KB.Object.Articles
 
         public int? Index { get; set; }
 
-        public List<Tag> Tags { get; set; }
+        public List<TagInfo> Tags { get; set; }
     }
 }

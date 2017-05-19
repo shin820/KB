@@ -17,15 +17,15 @@ namespace tag.WebApi.Controllers
             _tagAppService = tagAppService;
         }
 
-        public IQueryable<Tag> GetTags()
+        public IQueryable<TagInfo> GetTags()
         {
             return _tagAppService.FindAll();
         }
 
-        [ResponseType(typeof(Tag))]
+        [ResponseType(typeof(TagInfo))]
         public IHttpActionResult GetTag(int id)
         {
-            Tag tag = _tagAppService.Find(id);
+            TagInfo tag = _tagAppService.Find(id);
             if (tag == null)
             {
                 return NotFound();
@@ -35,7 +35,7 @@ namespace tag.WebApi.Controllers
         }
 
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutTag(int id, Tag tag)
+        public IHttpActionResult PutTag(int id, TagInfo tag)
         {
             if (!ModelState.IsValid)
             {
@@ -61,8 +61,8 @@ namespace tag.WebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [ResponseType(typeof(Tag))]
-        public IHttpActionResult PostTag(Tag createRequest)
+        [ResponseType(typeof(TagInfo))]
+        public IHttpActionResult PostTag(TagInfo createRequest)
         {
             if (!ModelState.IsValid)
             {
@@ -74,7 +74,7 @@ namespace tag.WebApi.Controllers
             return CreatedAtRoute("DefaultApi", new { id = tag.Id }, tag);
         }
 
-        [ResponseType(typeof(Tag))]
+        [ResponseType(typeof(TagInfo))]
         public IHttpActionResult DeleteTag(int id)
         {
             var tag = _tagAppService.Find(id);

@@ -15,16 +15,16 @@ namespace KB.Process.Tags
             _tagService = tagService;
         }
 
-        public Tag Find(int id)
+        public TagInfo Find(int id)
         {
             var tag = _tagService.Find(id);
-            return Mapper.Map<Tag>(tag);
+            return Mapper.Map<TagInfo>(tag);
         }
 
-        public IQueryable<Tag> FindAll()
+        public IQueryable<TagInfo> FindAll()
         {
             return _tagService.FindAll()
-                .ProjectTo<Tag>(); ;
+                .ProjectTo<TagInfo>(); ;
         }
 
         public void Delete(int id)
@@ -32,9 +32,9 @@ namespace KB.Process.Tags
             _tagService.Delete(id);
         }
 
-        public void Update(int id, Tag tagDto)
+        public void Update(int id, TagInfo tagDto)
         {
-            t_KB_Tag tag = _tagService.Find(id);
+            Tag tag = _tagService.Find(id);
             if (tag != null)
             {
                 tagDto.Id = id;
@@ -43,12 +43,12 @@ namespace KB.Process.Tags
             }
         }
 
-        public Tag Insert(Tag tagDto)
+        public TagInfo Insert(TagInfo tagDto)
         {
-            t_KB_Tag tag = Mapper.Map<t_KB_Tag>(tagDto);
+            Tag tag = Mapper.Map<Tag>(tagDto);
             _tagService.Insert(tag);
 
-            return Mapper.Map<Tag>(tag);
+            return Mapper.Map<TagInfo>(tag);
         }
     }
 }

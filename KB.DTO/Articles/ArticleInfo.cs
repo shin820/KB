@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KB.Object.Articles
 {
-    public class Article
+    public class ArticleInfo
     {
         public int Id { get; set; }
 

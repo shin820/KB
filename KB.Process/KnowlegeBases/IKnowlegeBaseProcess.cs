@@ -6,9 +6,9 @@ namespace KB.Process.KnowlegeBases
     public interface IKnowlegeBaseProcess
     {
         void Delete(int id);
-        KnowlegeBase Find(int id);
-        IQueryable<KnowlegeBase> FindAll();
-        KnowlegeBase Insert(KnowlegeBase kbDto);
-        void Update(int id, KnowlegeBase kbDto);
+        KnowlegeBaseInfo Find(int id);
+        IQueryable<KnowlegeBaseInfo> FindAll();
+        KnowlegeBaseInfo Insert(KnowlegeBaseInfo kbDto);
+        void Update(int id, KnowlegeBaseInfo kbDto);
     }
 }

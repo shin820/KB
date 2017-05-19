@@ -16,12 +16,12 @@ namespace KB.BizService.Tags
             _repository = repository;
         }
 
-        public t_KB_Tag Find(int id)
+        public Tag Find(int id)
         {
             return _repository.Find(id);
         }
 
-        public IQueryable<t_KB_Tag> FindAll()
+        public IQueryable<Tag> FindAll()
         {
             return _repository.FindAll()
                 .OrderByDescending(t => t.Id);
@@ -29,19 +29,19 @@ namespace KB.BizService.Tags
 
         public void Delete(int id)
         {
-            t_KB_Tag tag = _repository.Find(id);
+            Tag tag = _repository.Find(id);
             if (tag != null)
             {
                 _repository.Delete(tag);
             }
         }
 
-        public void Update(t_KB_Tag tag)
+        public void Update(Tag tag)
         {
             _repository.Update(tag);
         }
 
-        public t_KB_Tag Insert(t_KB_Tag tag)
+        public Tag Insert(Tag tag)
         {
             tag.CreatedTime = DateTime.UtcNow;
             _repository.Insert(tag);

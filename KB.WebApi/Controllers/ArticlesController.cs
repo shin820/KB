@@ -19,7 +19,7 @@ namespace KB.WebApi.Controllers
         }
 
         // GET: api/articles
-        public IQueryable<Article> GetArticles()
+        public IQueryable<ArticleInfo> GetArticles()
         {
             return _articleService.FindAll();
         }
@@ -39,7 +39,7 @@ namespace KB.WebApi.Controllers
 
         // PUT: api/articles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutArticle(int id, Article article)
+        public IHttpActionResult PutArticle(int id, ArticleInfo article)
         {
             if (!ModelState.IsValid)
             {
@@ -66,8 +66,8 @@ namespace KB.WebApi.Controllers
         }
 
         // POST: api/articles
-        [ResponseType(typeof(Article))]
-        public IHttpActionResult PostArticle(Article createRequest)
+        [ResponseType(typeof(ArticleInfo))]
+        public IHttpActionResult PostArticle(ArticleInfo createRequest)
         {
             if (!ModelState.IsValid)
             {
