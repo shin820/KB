@@ -1,7 +1,6 @@
 namespace KB.Entity
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
 
     public class Category : KBEntity
     {

@@ -1,7 +1,6 @@
 namespace KB.Entity
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
     public class Comm100System
     {

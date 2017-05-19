@@ -1,8 +1,5 @@
 namespace KB.Entity
 {
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
     public class ArticleTags : KBEntity
     {
         public int ArticleId { get; set; }
