@@ -1,4 +1,4 @@
-﻿using KB.Application.Services;
+﻿using KB.Application.AppServices;
 using KB.Application.Dto.Articles;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -11,24 +11,24 @@ namespace KB.WebApi.Controllers
     [RoutePrefix("api/articles")]
     public class ArticlesController : ApiController
     {
-        private IArticleAppService _articleService;
+        private IArticleAppService _articleAppService;
 
-        public ArticlesController(IArticleAppService articleService)
+        public ArticlesController(IArticleAppService articleAppService)
         {
-            _articleService = articleService;
+            _articleAppService = articleAppService;
         }
 
         // GET: api/articles
         public IQueryable<ArticleInfo> GetArticles()
         {
-            return _articleService.FindAll();
+            return _articleAppService.FindAll();
         }
 
         // GET: api/articles/5
         [ResponseType(typeof(ArticleDetail))]
         public IHttpActionResult GetArticle(int id)
         {
-            ArticleDetail article = _articleService.Find(id);
+            ArticleDetail article = _articleAppService.Find(id);
             if (article == null)
             {
                 return NotFound();
@@ -48,11 +48,11 @@ namespace KB.WebApi.Controllers
 
             try
             {
-                _articleService.Update(id, article);
+                _articleAppService.Update(id, article);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (_articleService.Find(id) == null)
+                if (_articleAppService.Find(id) == null)
                 {
                     return NotFound();
                 }
@@ -74,7 +74,7 @@ namespace KB.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var article = _articleService.Insert(createRequest);
+            var article = _articleAppService.Insert(createRequest);
 
             return CreatedAtRoute("DefaultApi", new { id = article.Id }, article);
         }
@@ -83,13 +83,13 @@ namespace KB.WebApi.Controllers
         [ResponseType(typeof(ArticleDetail))]
         public IHttpActionResult DeleteArticle(int id)
         {
-            var article = _articleService.Find(id);
+            var article = _articleAppService.Find(id);
             if (article == null)
             {
                 return NotFound();
             }
 
-            _articleService.Delete(id);
+            _articleAppService.Delete(id);
 
             return Ok(article);
         }
@@ -99,7 +99,7 @@ namespace KB.WebApi.Controllers
         public IHttpActionResult AddTag(int articleId, int tagId)
         {
             // todo : error handling.
-            _articleService.AddTag(articleId, tagId);
+            _articleAppService.AddTag(articleId, tagId);
             return StatusCode(HttpStatusCode.Created);
         }
 
@@ -108,7 +108,7 @@ namespace KB.WebApi.Controllers
         public IHttpActionResult RemoveTag(int articleId, int tagId)
         {
             // todo : error handling.
-            _articleService.RemoveTag(articleId, tagId);
+            _articleAppService.RemoveTag(articleId, tagId);
             return StatusCode(HttpStatusCode.NoContent);
         }
     }

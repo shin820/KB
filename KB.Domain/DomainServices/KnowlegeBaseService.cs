@@ -2,7 +2,7 @@
 using KB.Domain.Repositories;
 using System.Linq;
 
-namespace KB.Domain.Services
+namespace KB.Domain.DomainServices
 {
     public class KnowlegeBaseService : IKnowlegeBaseService
     {

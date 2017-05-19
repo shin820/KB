@@ -1,53 +1,53 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using KB.Application.Dto.KB;
-using KB.Domain.Services;
+using KB.Domain.DomainServices;
 using KB.Domain.Entities;
 using System.Linq;
 
-namespace KB.Application.Services
+namespace KB.Application.AppServices
 {
     public class KnowlegeBaseAppService : IKnowlegeBaseAppService
     {
-        private IKnowlegeBaseService _service;
+        private IKnowlegeBaseService _kbDomainService;
         public KnowlegeBaseAppService(
-                IKnowlegeBaseService service
+                IKnowlegeBaseService kbDomainService
             )
         {
-            _service = service;
+            _kbDomainService = kbDomainService;
         }
 
         public KnowlegeBaseInfo Find(int id)
         {
-            var article = _service.Find(id);
+            var article = _kbDomainService.Find(id);
             return Mapper.Map<KnowlegeBaseInfo>(article);
         }
 
         public IQueryable<KnowlegeBaseInfo> FindAll()
         {
-            return _service.FindAll()
+            return _kbDomainService.FindAll()
                 .ProjectTo<KnowlegeBaseInfo>();
         }
 
         public void Delete(int id)
         {
-            _service.Delete(id);
+            _kbDomainService.Delete(id);
         }
 
         public void Update(int id, KnowlegeBaseInfo kbDto)
         {
-            KnowledgeBase kb = _service.Find(id);
+            KnowledgeBase kb = _kbDomainService.Find(id);
             if (kb != null)
             {
                 kb = Mapper.Map(kbDto, kb);
-                _service.Update(kb);
+                _kbDomainService.Update(kb);
             }
         }
 
         public KnowlegeBaseInfo Insert(KnowlegeBaseInfo kbDto)
         {
             KnowledgeBase kb = Mapper.Map<KnowledgeBase>(kbDto);
-            _service.Insert(kb);
+            _kbDomainService.Insert(kb);
 
             return Mapper.Map<KnowlegeBaseInfo>(kb);
         }

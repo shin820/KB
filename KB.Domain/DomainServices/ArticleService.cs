@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Transactions;
 
-namespace KB.Domain.Services
+namespace KB.Domain.DomainServices
 {
     public class ArticleService : IArticleService
     {

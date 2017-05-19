@@ -1,7 +1,7 @@
 ﻿using KB.Application.Dto.Tags;
 using System.Linq;
 
-namespace KB.Application.Services
+namespace KB.Application.AppServices
 {
     public interface ITagAppService
     {

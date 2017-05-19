@@ -1,4 +1,4 @@
-﻿using KB.Application.Services;
+﻿using KB.Application.AppServices;
 using KB.Application.Dto.Tags;
 using System.Data.Entity.Infrastructure;
 using System.Linq;

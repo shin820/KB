@@ -50,19 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\ArticleAppService.cs" />
-    <Compile Include="Services\IArticleAppService.cs" />
+    <Compile Include="AppServices\ArticleAppService.cs" />
+    <Compile Include="AppServices\IArticleAppService.cs" />
     <Compile Include="ApplicationIocFacility.cs" />
-    <Compile Include="Services\IKnowlegeBaseAppService.cs" />
-    <Compile Include="Services\KnowlegeBaseAppService.cs" />
+    <Compile Include="AppServices\IKnowlegeBaseAppService.cs" />
+    <Compile Include="AppServices\KnowlegeBaseAppService.cs" />
     <Compile Include="Dto\Articles\ArticleDetail.cs" />
     <Compile Include="Dto\Articles\ArticleInfo.cs" />
     <Compile Include="DtoMappings.cs" />
     <Compile Include="Dto\KB\KnowlegeBaseInfo.cs" />
     <Compile Include="Dto\Tags\TagInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ITagAppService.cs" />
-    <Compile Include="Services\TagAppService.cs" />
+    <Compile Include="AppServices\ITagAppService.cs" />
+    <Compile Include="AppServices\TagAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KB.Domain\KB.Domain.csproj">

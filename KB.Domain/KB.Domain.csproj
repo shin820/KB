@@ -75,14 +75,14 @@
     <Compile Include="Repositories\KnowlegeBaseRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\TagRepository.cs" />
-    <Compile Include="Services\ArticleService.cs" />
-    <Compile Include="Services\IArticleService.cs" />
+    <Compile Include="DomainServices\ArticleService.cs" />
+    <Compile Include="DomainServices\IArticleService.cs" />
     <Compile Include="DomainIocInitializer.cs" />
-    <Compile Include="Services\IKnowlegeBaseService.cs" />
-    <Compile Include="Services\KnowlegeBaseService.cs" />
+    <Compile Include="DomainServices\IKnowlegeBaseService.cs" />
+    <Compile Include="DomainServices\KnowlegeBaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ITagService.cs" />
-    <Compile Include="Services\TagService.cs" />
+    <Compile Include="DomainServices\ITagService.cs" />
+    <Compile Include="DomainServices\TagService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

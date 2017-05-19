@@ -3,7 +3,7 @@ using KB.Domain.Repositories;
 using System;
 using System.Linq;
 
-namespace KB.Domain.Services
+namespace KB.Domain.DomainServices
 {
     public class TagService : ITagService
     {
