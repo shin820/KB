@@ -7,7 +7,7 @@ namespace KB.Domain.Entities
     {
         public Tag()
         {
-            ArticleTags = new HashSet<ArticleTags>();
+            ArticleTags = new HashSet<ArticleTag>();
         }
 
         public int Id { get; private set; }
@@ -18,7 +18,7 @@ namespace KB.Domain.Entities
 
         public string Name { get; set; }
 
-        public virtual ICollection<ArticleTags> ArticleTags { get; set; }
+        public virtual ICollection<ArticleTag> ArticleTags { get; set; }
 
         public virtual KnowledgeBase KnowledgeBase { get; set; }
     }

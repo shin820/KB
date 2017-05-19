@@ -1,6 +1,6 @@
 namespace KB.Domain.Entities
 {
-    public class ArticleTags : KBEntity
+    public class ArticleTag : KBEntity
     {
         public int ArticleId { get; set; }
 

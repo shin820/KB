@@ -89,7 +89,7 @@ namespace KB.Domain.DomainServices
                 throw new InvalidOperationException("Relation existed.");
             }
 
-            var relateion = new ArticleTags
+            var relateion = new ArticleTag
             {
                 ArticleId = article.Id,
                 TagId = tag.Id,
@@ -102,7 +102,7 @@ namespace KB.Domain.DomainServices
 
         public void RemoveTag(int articleId, int tagId)
         {
-            ArticleTags relation = _articleTagRelationRepository
+            ArticleTag relation = _articleTagRelationRepository
                 .FindAll()
                 .Where(t => t.ArticleId == articleId && t.TagId == tagId)
                 .FirstOrDefault();

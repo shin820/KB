@@ -10,7 +10,7 @@ namespace KB.Domain
         }
 
         public virtual DbSet<Article> Articles { get; set; }
-        public virtual DbSet<ArticleTags> ArticleTags { get; set; }
+        public virtual DbSet<ArticleTag> ArticleTags { get; set; }
         public virtual DbSet<Category> Categorys { get; set; }
         public virtual DbSet<Comm100System> Comm100Systems { get; set; }
         public virtual DbSet<KnowledgeBase> KnowledgeBases { get; set; }
@@ -74,9 +74,9 @@ namespace KB.Domain
                 .Property(t => t.Name)
                 .IsRequired().HasMaxLength(256);
 
-            modelBuilder.Entity<ArticleTags>()
+            modelBuilder.Entity<ArticleTag>()
                 .ToTable("t_KB_ArticlesTagsRelation");
-            modelBuilder.Entity<ArticleTags>()
+            modelBuilder.Entity<ArticleTag>()
                 .HasKey(t => new { t.ArticleId, t.TagId });
         }
     }

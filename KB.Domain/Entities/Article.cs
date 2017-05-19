@@ -8,7 +8,7 @@ namespace KB.Domain.Entities
     {
         public Article()
         {
-            ArticleTags = new List<ArticleTags>();
+            ArticleTags = new List<ArticleTag>();
         }
 
         public int Id { get; private set; }
@@ -39,14 +39,14 @@ namespace KB.Domain.Entities
 
         public int? Index { get; set; }
 
-        public virtual IList<ArticleTags> ArticleTags { get; set; }
+        public virtual IList<ArticleTag> ArticleTags { get; set; }
 
         public virtual KnowledgeBase KnowledgeBase { get; set; }
 
         public void AddTag(int tagId)
         {
             ArticleTags.Add(
-                new ArticleTags
+                new ArticleTag
                 {
                     ArticleId = Id,
                     TagId = tagId,

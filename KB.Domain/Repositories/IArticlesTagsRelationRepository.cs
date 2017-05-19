@@ -2,7 +2,7 @@
 
 namespace KB.Domain.Repositories
 {
-    public interface IArticlesTagsRelationRepository : IRepositoryBase<ArticleTags>
+    public interface IArticlesTagsRelationRepository : IRepositoryBase<ArticleTag>
     {
 
     }
