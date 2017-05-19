@@ -17,16 +17,16 @@ namespace KB.Application.AppServices
             _kbDomainService = kbDomainService;
         }
 
-        public KnowlegeBaseInfo Find(int id)
+        public KnowlegeBaseDto Find(int id)
         {
             var article = _kbDomainService.Find(id);
-            return Mapper.Map<KnowlegeBaseInfo>(article);
+            return Mapper.Map<KnowlegeBaseDto>(article);
         }
 
-        public IQueryable<KnowlegeBaseInfo> FindAll()
+        public IQueryable<KnowlegeBaseDto> FindAll()
         {
             return _kbDomainService.FindAll()
-                .ProjectTo<KnowlegeBaseInfo>();
+                .ProjectTo<KnowlegeBaseDto>();
         }
 
         public void Delete(int id)
@@ -34,7 +34,7 @@ namespace KB.Application.AppServices
             _kbDomainService.Delete(id);
         }
 
-        public void Update(int id, KnowlegeBaseInfo kbDto)
+        public void Update(int id, KnowlegeBaseDto kbDto)
         {
             KnowledgeBase kb = _kbDomainService.Find(id);
             if (kb != null)
@@ -44,12 +44,12 @@ namespace KB.Application.AppServices
             }
         }
 
-        public KnowlegeBaseInfo Insert(KnowlegeBaseInfo kbDto)
+        public KnowlegeBaseDto Insert(KnowlegeBaseDto kbDto)
         {
             KnowledgeBase kb = Mapper.Map<KnowledgeBase>(kbDto);
             _kbDomainService.Insert(kb);
 
-            return Mapper.Map<KnowlegeBaseInfo>(kb);
+            return Mapper.Map<KnowlegeBaseDto>(kb);
         }
     }
 }

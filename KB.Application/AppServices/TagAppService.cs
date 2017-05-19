@@ -15,16 +15,16 @@ namespace KB.Application.AppServices
             _tagDomainService = tagDomainService;
         }
 
-        public TagInfo Find(int id)
+        public TagDto Find(int id)
         {
             var tag = _tagDomainService.Find(id);
-            return Mapper.Map<TagInfo>(tag);
+            return Mapper.Map<TagDto>(tag);
         }
 
-        public IQueryable<TagInfo> FindAll()
+        public IQueryable<TagDto> FindAll()
         {
             return _tagDomainService.FindAll()
-                .ProjectTo<TagInfo>(); ;
+                .ProjectTo<TagDto>(); ;
         }
 
         public void Delete(int id)
@@ -32,7 +32,7 @@ namespace KB.Application.AppServices
             _tagDomainService.Delete(id);
         }
 
-        public void Update(int id, TagInfo tagDto)
+        public void Update(int id, TagDto tagDto)
         {
             Tag tag = _tagDomainService.Find(id);
             if (tag != null)
@@ -43,12 +43,12 @@ namespace KB.Application.AppServices
             }
         }
 
-        public TagInfo Insert(TagInfo tagDto)
+        public TagDto Insert(TagDto tagDto)
         {
             Tag tag = Mapper.Map<Tag>(tagDto);
             _tagDomainService.Insert(tag);
 
-            return Mapper.Map<TagInfo>(tag);
+            return Mapper.Map<TagDto>(tag);
         }
     }
 }

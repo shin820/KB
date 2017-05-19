@@ -1,18 +1,21 @@
-﻿using KB.Application.Dto.Tags;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace KB.Application.Dto.Articles
 {
-    public class ArticleDetail
+    public class ArticleDto
     {
         public int Id { get; set; }
 
+        [Required]
         public int KBId { get; set; }
 
         public int SiteId { get; set; }
 
+        [Required]
         public string Body { get; set; }
 
+        [Required]
+        [StringLength(1024)]
         public string CustomURL { get; set; }
 
         public int CategoryId { get; set; }
@@ -21,14 +24,13 @@ namespace KB.Application.Dto.Articles
 
         public short Status { get; set; }
 
+        [Required]
+        [StringLength(2048)]
         public string Title { get; set; }
 
-        public int? Views { get; set; }
-
+        [StringLength(256)]
         public string Name { get; set; }
 
         public int? Index { get; set; }
-
-        public List<TagInfo> Tags { get; set; }
     }
 }

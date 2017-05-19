@@ -11,17 +11,17 @@ namespace KB.Application
         public DtoMappings()
         {
             // Article
-            CreateMap<Article, ArticleInfo>();
-            CreateMap<Article, ArticleDetail>();
-            CreateMap<ArticleInfo, Article>();
+            CreateMap<Article, ArticleDto>();
+            CreateMap<Article, ArticleDetailDto>();
+            CreateMap<ArticleDto, Article>();
 
             // KnowlgeBase
-            CreateMap<KnowledgeBase, KnowlegeBaseInfo>();
-            CreateMap<KnowlegeBaseInfo, KnowledgeBase>();
+            CreateMap<KnowledgeBase, KnowlegeBaseDto>();
+            CreateMap<KnowlegeBaseDto, KnowledgeBase>();
 
             // Tag
-            CreateMap<Tag, TagInfo>();
-            CreateMap<TagInfo, Tag>();
+            CreateMap<Tag, TagDto>();
+            CreateMap<TagDto, Tag>();
         }
     }
 }

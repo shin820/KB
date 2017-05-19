@@ -6,9 +6,9 @@ namespace KB.Application.AppServices
     public interface ITagAppService
     {
         void Delete(int id);
-        TagInfo Find(int id);
-        IQueryable<TagInfo> FindAll();
-        TagInfo Insert(TagInfo tagDto);
-        void Update(int id, TagInfo tagDto);
+        TagDto Find(int id);
+        IQueryable<TagDto> FindAll();
+        TagDto Insert(TagDto tagDto);
+        void Update(int id, TagDto tagDto);
     }
 }

@@ -17,15 +17,15 @@ namespace KB.WebApi.Controllers
             _kbAppService = kbAppService;
         }
 
-        public IQueryable<KnowlegeBaseInfo> GetKnowlegeBases()
+        public IQueryable<KnowlegeBaseDto> GetKnowlegeBases()
         {
             return _kbAppService.FindAll();
         }
 
-        [ResponseType(typeof(KnowlegeBaseInfo))]
+        [ResponseType(typeof(KnowlegeBaseDto))]
         public IHttpActionResult GetKnowlegeBase(int id)
         {
-            KnowlegeBaseInfo kb = _kbAppService.Find((int)id);
+            KnowlegeBaseDto kb = _kbAppService.Find((int)id);
             if (kb == null)
             {
                 return NotFound();
@@ -35,7 +35,7 @@ namespace KB.WebApi.Controllers
         }
 
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutKnowlegeBase(int id, KnowlegeBaseInfo kb)
+        public IHttpActionResult PutKnowlegeBase(int id, KnowlegeBaseDto kb)
         {
             if (!ModelState.IsValid)
             {
@@ -61,8 +61,8 @@ namespace KB.WebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [ResponseType(typeof(KnowlegeBaseInfo))]
-        public IHttpActionResult PostKnowlegeBase(KnowlegeBaseInfo createRequest)
+        [ResponseType(typeof(KnowlegeBaseDto))]
+        public IHttpActionResult PostKnowlegeBase(KnowlegeBaseDto createRequest)
         {
             if (!ModelState.IsValid)
             {
@@ -74,7 +74,7 @@ namespace KB.WebApi.Controllers
             return CreatedAtRoute("DefaultApi", new { id = kb.Id }, kb);
         }
 
-        [ResponseType(typeof(KnowlegeBaseInfo))]
+        [ResponseType(typeof(KnowlegeBaseDto))]
         public IHttpActionResult DeleteKnowlegeBase(int id)
         {
             var kb = _kbAppService.Find(id);

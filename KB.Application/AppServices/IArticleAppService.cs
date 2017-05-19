@@ -7,10 +7,10 @@ namespace KB.Application.AppServices
     {
         void AddTag(int articleId, int tagId);
         void Delete(int id);
-        ArticleDetail Find(int id);
-        IQueryable<ArticleInfo> FindAll();
-        ArticleInfo Insert(ArticleInfo articleDto);
+        ArticleDetailDto Find(int id);
+        IQueryable<ArticleDto> FindAll();
+        ArticleDto Insert(ArticleDto articleDto);
         void RemoveTag(int articleId, int tagId);
-        void Update(int id, ArticleInfo articleDto);
+        void Update(int id, ArticleDto articleDto);
     }
 }

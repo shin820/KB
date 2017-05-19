@@ -2,7 +2,7 @@
 
 namespace KB.Application.Dto.KB
 {
-    public class KnowlegeBaseInfo
+    public class KnowlegeBaseDto
     {
         public int Id { get; set; }
 

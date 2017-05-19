@@ -2,7 +2,7 @@
 
 namespace KB.Application.Dto.Tags
 {
-    public class TagInfo
+    public class TagDto
     {
         public int Id { get; set; }
 

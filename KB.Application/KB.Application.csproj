@@ -55,11 +55,11 @@
     <Compile Include="ApplicationIocFacility.cs" />
     <Compile Include="AppServices\IKnowlegeBaseAppService.cs" />
     <Compile Include="AppServices\KnowlegeBaseAppService.cs" />
-    <Compile Include="Dto\Articles\ArticleDetail.cs" />
-    <Compile Include="Dto\Articles\ArticleInfo.cs" />
+    <Compile Include="Dto\Articles\ArticleDetailDto.cs" />
+    <Compile Include="Dto\Articles\ArticleDto.cs" />
     <Compile Include="DtoMappings.cs" />
-    <Compile Include="Dto\KB\KnowlegeBaseInfo.cs" />
-    <Compile Include="Dto\Tags\TagInfo.cs" />
+    <Compile Include="Dto\KB\KnowlegeBaseDto.cs" />
+    <Compile Include="Dto\Tags\TagDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AppServices\ITagAppService.cs" />
     <Compile Include="AppServices\TagAppService.cs" />

@@ -15,17 +15,17 @@ namespace KB.Application.AppServices
             _articleDomainService = articleDomainService;
         }
 
-        public ArticleDetail Find(int id)
+        public ArticleDetailDto Find(int id)
         {
             var article = _articleDomainService.Find(id);
-            var articleDto = Mapper.Map<ArticleDetail>(article);
+            var articleDto = Mapper.Map<ArticleDetailDto>(article);
             return articleDto;
         }
 
-        public IQueryable<ArticleInfo> FindAll()
+        public IQueryable<ArticleDto> FindAll()
         {
             return _articleDomainService.FindAll()
-                .ProjectTo<ArticleInfo>();
+                .ProjectTo<ArticleDto>();
         }
 
         public void Delete(int id)
@@ -33,7 +33,7 @@ namespace KB.Application.AppServices
             _articleDomainService.Delete(id);
         }
 
-        public void Update(int id, ArticleInfo articleDto)
+        public void Update(int id, ArticleDto articleDto)
         {
             Article article = _articleDomainService.Find(id);
             if (article != null)
@@ -44,12 +44,12 @@ namespace KB.Application.AppServices
             }
         }
 
-        public ArticleInfo Insert(ArticleInfo articleDto)
+        public ArticleDto Insert(ArticleDto articleDto)
         {
             Article article = Mapper.Map<Article>(articleDto);
             _articleDomainService.Insert(article);
 
-            return Mapper.Map<ArticleInfo>(article);
+            return Mapper.Map<ArticleDto>(article);
         }
 
         public void AddTag(int articleId, int tagId)
