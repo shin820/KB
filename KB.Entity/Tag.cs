@@ -6,7 +6,7 @@ namespace KB.Entity
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public class Tag : KBEntityBase
+    public class Tag : KBEntity
     {
         public Tag()
         {

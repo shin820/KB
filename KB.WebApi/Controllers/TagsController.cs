@@ -1,18 +1,18 @@
-﻿using System.Data.Entity.Infrastructure;
+﻿using KB.ApplicationService.AppServices;
+using KB.ApplicationService.Dto.Tags;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using KB.Object.Tags;
-using KB.Process.Tags;
 
-namespace tag.WebApi.Controllers
+namespace KB.WebApi.Controllers
 {
     public class TagsController : ApiController
     {
-        private ITagProcess _tagAppService;
+        private ITagAppService _tagAppService;
 
-        public TagsController(ITagProcess tagAppService)
+        public TagsController(ITagAppService tagAppService)
         {
             _tagAppService = tagAppService;
         }

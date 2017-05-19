@@ -1,5 +1,5 @@
-﻿using KB.Object.KB;
-using KB.Process.KnowlegeBases;
+﻿using KB.ApplicationService.AppServices;
+using KB.ApplicationService.Dto.KB;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -10,9 +10,9 @@ namespace KB.WebApi.Controllers
 {
     public class KnowlegeBasesController : ApiController
     {
-        private IKnowlegeBaseProcess _kbAppService;
+        private IKnowlegeBaseAppService _kbAppService;
 
-        public KnowlegeBasesController(IKnowlegeBaseProcess kbAppService)
+        public KnowlegeBasesController(IKnowlegeBaseAppService kbAppService)
         {
             _kbAppService = kbAppService;
         }

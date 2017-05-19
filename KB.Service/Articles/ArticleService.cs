@@ -1,15 +1,11 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using KB.Object.Articles;
-using KB.Object.Tags;
-using KB.Entity;
+﻿using KB.Entity;
 using KB.Repository.Articles;
 using KB.Repository.Tags;
 using System;
 using System.Linq;
 using System.Transactions;
 
-namespace KB.BizService.Articles
+namespace KB.DomainService.Articles
 {
     public class ArticleService : IArticleService
     {

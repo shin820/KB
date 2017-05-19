@@ -5,7 +5,7 @@ namespace KB.Entity
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Article : KBEntityBase
+    public class Article : KBEntity
     {
         public Article()
         {

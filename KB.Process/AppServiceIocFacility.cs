@@ -1,21 +1,21 @@
 ﻿using Castle.MicroKernel;
 using Castle.MicroKernel.Facilities;
 using Castle.MicroKernel.Registration;
-using KB.Repository;
+using KB.BizService;
 
-namespace KB.BizService
+namespace KB.Process
 {
-    public class BusinessServiceIocInitializer
+    public class ProcessIocFacility : AbstractFacility
     {
-        public static void Init(IKernel kernel)
+        protected override void Init()
         {
-            kernel.Register(
-            Classes.FromAssemblyNamed("KB.BizService").Pick().If(t => t.Name.EndsWith("Service"))
+            Kernel.Register(
+            Classes.FromAssemblyNamed("KB.ApplicationService").Pick().If(t => t.Name.EndsWith("AppService"))
                     .Configure(configurer => configurer.Named(configurer.Implementation.Name))
                     .WithService.DefaultInterfaces().LifestylePerWebRequest()
             );
 
-            RepositoryIocInitializer.Init(kernel);
+            DomainServiceIocInitializer.Init(Kernel);
         }
     }
 }

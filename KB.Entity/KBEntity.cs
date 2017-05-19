@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KB.Entity
 {
-    public abstract class KBEntityBase
+    public abstract class KBEntity
     {
         public int SiteId { get; set; }
 

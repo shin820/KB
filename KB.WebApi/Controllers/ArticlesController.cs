@@ -1,19 +1,19 @@
-﻿using System.Data.Entity.Infrastructure;
+﻿using KB.ApplicationService.AppServices;
+using KB.ApplicationService.Dto.Articles;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using KB.Object.Articles;
-using KB.Process.Articles;
 
 namespace KB.WebApi.Controllers
 {
     [RoutePrefix("api/articles")]
     public class ArticlesController : ApiController
     {
-        private IArticleProcess _articleService;
+        private IArticleAppService _articleService;
 
-        public ArticlesController(IArticleProcess articleService)
+        public ArticlesController(IArticleAppService articleService)
         {
             _articleService = articleService;
         }

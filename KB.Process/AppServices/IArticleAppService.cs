@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using KB.Object.Articles;
+﻿using KB.ApplicationService.Dto.Articles;
+using System.Linq;
 
-namespace KB.Process.Articles
+namespace KB.ApplicationService.AppServices
 {
-    public interface IArticleProcess
+    public interface IArticleAppService
     {
         void AddTag(int articleId, int tagId);
         void Delete(int id);

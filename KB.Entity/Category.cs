@@ -3,7 +3,7 @@ namespace KB.Entity
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Category : KBEntityBase
+    public class Category : KBEntity
     {
         public int Id { get; set; }
 

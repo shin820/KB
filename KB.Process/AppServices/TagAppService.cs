@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using KB.BizService.Tags;
+using KB.ApplicationService.Dto.Tags;
+using KB.DomainService.Tags;
 using KB.Entity;
-using KB.Object.Tags;
 using System.Linq;
 
-namespace KB.Process.Tags
+namespace KB.ApplicationService.AppServices
 {
-    public class TagProcess : ITagProcess
+    public class TagAppService : ITagAppService
     {
         private ITagService _tagService;
-        public TagProcess(ITagService tagService)
+        public TagAppService(ITagService tagService)
         {
             _tagService = tagService;
         }

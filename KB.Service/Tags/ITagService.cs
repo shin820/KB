@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using KB.Object.Tags;
 using KB.Entity;
 
-namespace KB.BizService.Tags
+namespace KB.DomainService.Tags
 {
     public interface ITagService
     {

@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using KB.Object.Tags;
+﻿using KB.ApplicationService.Dto.Tags;
+using System.Linq;
 
-namespace KB.Process.Tags
+namespace KB.ApplicationService.AppServices
 {
-    public interface ITagProcess
+    public interface ITagAppService
     {
         void Delete(int id);
         TagInfo Find(int id);

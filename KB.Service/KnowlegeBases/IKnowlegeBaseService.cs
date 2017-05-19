@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using KB.Object.KB;
 using KB.Entity;
 
-namespace KB.BizService.KnowlegeBases
+namespace KB.DomainService.KnowlegeBases
 {
     public interface IKnowlegeBaseService
     {

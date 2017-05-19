@@ -7,8 +7,8 @@
     <ProjectGuid>{349CD324-CB06-46E7-97F1-33AF7EA446FF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KB.Process</RootNamespace>
-    <AssemblyName>KB.Process</AssemblyName>
+    <RootNamespace>KB.ApplicationService</RootNamespace>
+    <AssemblyName>KB.ApplicationService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,6 +40,7 @@
       <HintPath>..\packages\Castle.Windsor.3.4.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,27 +50,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Articles\ArticleProcess.cs" />
-    <Compile Include="Articles\IArticleProcess.cs" />
-    <Compile Include="ProcessIocFacility.cs" />
-    <Compile Include="KnowlegeBases\IKnowlegeBaseProcess.cs" />
-    <Compile Include="KnowlegeBases\KnowlegeBaseProcess.cs" />
+    <Compile Include="AppServices\ArticleAppService.cs" />
+    <Compile Include="AppServices\IArticleAppService.cs" />
+    <Compile Include="AppServiceIocFacility.cs" />
+    <Compile Include="AppServices\IKnowlegeBaseAppService.cs" />
+    <Compile Include="AppServices\KnowlegeBaseAppService.cs" />
+    <Compile Include="Dto\Articles\ArticleDetail.cs" />
+    <Compile Include="Dto\Articles\ArticleInfo.cs" />
+    <Compile Include="Dto\DtoMappings.cs" />
+    <Compile Include="Dto\KB\KnowlegeBaseInfo.cs" />
+    <Compile Include="Dto\Tags\TagInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tags\ITagProcess.cs" />
-    <Compile Include="Tags\TagProcess.cs" />
+    <Compile Include="AppServices\ITagAppService.cs" />
+    <Compile Include="AppServices\TagAppService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KB.DTO\KB.Object.csproj">
-      <Project>{a1354cfc-15c7-48a8-85d6-b1a656c949f5}</Project>
-      <Name>KB.Object</Name>
-    </ProjectReference>
     <ProjectReference Include="..\KB.Entity\KB.Entity.csproj">
       <Project>{fb079767-3df2-435c-89d3-e15f3d975098}</Project>
       <Name>KB.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KB.Service\KB.BizService.csproj">
+    <ProjectReference Include="..\KB.Service\KB.DomainService.csproj">
       <Project>{7f485985-ba40-4b9d-a0a9-63486c82f0af}</Project>
-      <Name>KB.BizService</Name>
+      <Name>KB.DomainService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,12 +1,9 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using KB.Object.Tags;
-using KB.Entity;
+﻿using KB.Entity;
 using KB.Repository.Tags;
 using System;
 using System.Linq;
 
-namespace KB.BizService.Tags
+namespace KB.DomainService.Tags
 {
     public class TagService : ITagService
     {

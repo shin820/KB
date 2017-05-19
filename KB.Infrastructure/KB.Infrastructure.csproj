@@ -7,8 +7,8 @@
     <ProjectGuid>{FE79D2DF-6B23-4278-9C84-FC1D6487C45B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KB.Framework</RootNamespace>
-    <AssemblyName>KB.Framework</AssemblyName>
+    <RootNamespace>KB.Infrastructure</RootNamespace>
+    <AssemblyName>KB.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

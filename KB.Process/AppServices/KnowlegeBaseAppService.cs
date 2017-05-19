@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using KB.BizService.KnowlegeBases;
+using KB.ApplicationService.Dto.KB;
+using KB.DomainService.KnowlegeBases;
 using KB.Entity;
-using KB.Object.KB;
 using System.Linq;
 
-namespace KB.Process.KnowlegeBases
+namespace KB.ApplicationService.AppServices
 {
-    public class KnowlegeBaseProcess : IKnowlegeBaseProcess
+    public class KnowlegeBaseAppService : IKnowlegeBaseAppService
     {
         private IKnowlegeBaseService _service;
-        public KnowlegeBaseProcess(
+        public KnowlegeBaseAppService(
                 IKnowlegeBaseService service
             )
         {

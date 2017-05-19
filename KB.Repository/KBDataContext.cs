@@ -1,14 +1,14 @@
-namespace KB.Entity
+namespace KB.Repository
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using KB.Entity;
 
-    public partial class KBDataContext : DbContext
+    public class KBDataContext : DbContext
     {
-        public KBDataContext()
-            : base("name=KBDataContext")
+        public KBDataContext(string nameOrConnectionString) : base(nameOrConnectionString)
         {
         }
 

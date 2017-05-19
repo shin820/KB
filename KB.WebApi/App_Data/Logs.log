@@ -117,3 +117,31 @@ System.IO.FileNotFoundException: Î´ÄÜ¼ÓÔØÎÄ¼ş»ò³ÌĞò¼¯¡°KB.Dto¡±»òËüµÄÄ³Ò»¸öÒÀÀµÏ
 2017-05-17 15:44:53,938 [1] INFO  System.Web.HttpApplication - Application started...
 2017-05-18 18:53:01,083 [1] INFO  System.Web.HttpApplication - Application starting...
 2017-05-18 18:53:01,798 [1] INFO  System.Web.HttpApplication - Application started...
+2017-05-19 14:09:03,884 [1] INFO  System.Web.HttpApplication - Application starting...
+2017-05-19 14:09:04,696 [1] ERROR System.Web.HttpApplication - Î´ÄÜ¼ÓÔØÎÄ¼ş»ò³ÌĞò¼¯¡°KB.Object¡±»òËüµÄÄ³Ò»¸öÒÀÀµÏî¡£ÏµÍ³ÕÒ²»µ½Ö¸¶¨µÄÎÄ¼ş¡£
+System.IO.FileNotFoundException: Î´ÄÜ¼ÓÔØÎÄ¼ş»ò³ÌĞò¼¯¡°KB.Object¡±»òËüµÄÄ³Ò»¸öÒÀÀµÏî¡£ÏµÍ³ÕÒ²»µ½Ö¸¶¨µÄÎÄ¼ş¡£
+ÎÄ¼şÃû:¡°KB.Object¡±
+   ÔÚ System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   ÔÚ System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   ÔÚ System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   ÔÚ System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   ÔÚ AutoMapper.Configuration.MapperConfigurationExpression.<>c.<AddProfiles>b__22_0(String name)
+   ÔÚ System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   ÔÚ System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   ÔÚ System.Linq.Enumerable.<SelectManyIterator>d__16`2.MoveNext()
+   ÔÚ System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   ÔÚ System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   ÔÚ AutoMapper.Configuration.MapperConfigurationExpression.AddProfilesCore(IEnumerable`1 assembliesToScan)
+   ÔÚ AutoMapper.Configuration.MapperConfigurationExpression.AddProfiles(String[] assemblyNamesToScan)
+   ÔÚ KB.WebApi.WebApiApplication.<>c.<Application_Start>b__1_0(IMapperConfigurationExpression cfg) Î»ÖÃ D:\SourceCode\KB\KB.WebApi\Global.asax.cs:ĞĞºÅ 32
+   ÔÚ AutoMapper.MapperConfiguration.Build(Action`1 configure)
+   ÔÚ AutoMapper.Mapper.Initialize(Action`1 config)
+   ÔÚ KB.WebApi.WebApiApplication.Application_Start() Î»ÖÃ D:\SourceCode\KB\KB.WebApi\Global.asax.cs:ĞĞºÅ 31
+
+¾¯¸æ: ³ÌĞò¼¯°ó¶¨ÈÕÖ¾¼ÇÂ¼±»¹Ø±Õ¡£
+ÒªÆôÓÃ³ÌĞò¼¯°ó¶¨Ê§°ÜÈÕÖ¾¼ÇÂ¼£¬Çë½«×¢²á±íÖµ [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD)ÉèÖÃÎª 1¡£
+×¢Òâ: »áÓĞÒ»Ğ©Óë³ÌĞò¼¯°ó¶¨Ê§°ÜÈÕÖ¾¼ÇÂ¼¹ØÁªµÄĞÔÄÜËğÊ§¡£
+Òª¹Ø±Õ´Ë¹¦ÄÜ£¬ÇëÒÆ³ı×¢²á±íÖµ [HKLM\Software\Microsoft\Fusion!EnableLog]¡£
+
+2017-05-19 14:10:51,517 [1] INFO  System.Web.HttpApplication - Application starting...
+2017-05-19 14:10:52,301 [1] INFO  System.Web.HttpApplication - Application started...

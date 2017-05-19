@@ -79,25 +79,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KB.DTO\KB.Object.csproj">
-      <Project>{a1354cfc-15c7-48a8-85d6-b1a656c949f5}</Project>
-      <Name>KB.Object</Name>
-    </ProjectReference>
     <ProjectReference Include="..\KB.Entity\KB.Entity.csproj">
       <Project>{FB079767-3DF2-435C-89D3-E15F3D975098}</Project>
       <Name>KB.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KB.Infrastructure\KB.Framework.csproj">
+    <ProjectReference Include="..\KB.Infrastructure\KB.Infrastructure.csproj">
       <Project>{fe79d2df-6b23-4278-9c84-fc1d6487c45b}</Project>
-      <Name>KB.Framework</Name>
+      <Name>KB.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\KB.Repository\KB.Repository.csproj">
       <Project>{4F7DBFEC-3A4E-410C-9C32-D092E50AAA7B}</Project>
       <Name>KB.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KB.Service\KB.BizService.csproj">
+    <ProjectReference Include="..\KB.Service\KB.DomainService.csproj">
       <Project>{7f485985-ba40-4b9d-a0a9-63486c82f0af}</Project>
-      <Name>KB.BizService</Name>
+      <Name>KB.DomainService</Name>
     </ProjectReference>
     <ProjectReference Include="..\KB.WebApi\KB.WebApi.csproj">
       <Project>{1e4bba68-4aa4-4116-a7df-b78c27ed6545}</Project>

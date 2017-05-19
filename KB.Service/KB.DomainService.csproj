@@ -7,8 +7,8 @@
     <ProjectGuid>{7F485985-BA40-4B9D-A0A9-63486C82F0AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KB.BizService</RootNamespace>
-    <AssemblyName>KB.BizService</AssemblyName>
+    <RootNamespace>KB.DomainService</RootNamespace>
+    <AssemblyName>KB.DomainService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="Articles\ArticleService.cs" />
     <Compile Include="Articles\IArticleService.cs" />
-    <Compile Include="BusinessServiceIocInitilizer.cs" />
+    <Compile Include="DomainServiceIocInitializer.cs" />
     <Compile Include="KnowlegeBases\IKnowlegeBaseService.cs" />
     <Compile Include="KnowlegeBases\KnowlegeBaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,17 +65,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KB.DTO\KB.Object.csproj">
-      <Project>{a1354cfc-15c7-48a8-85d6-b1a656c949f5}</Project>
-      <Name>KB.Object</Name>
-    </ProjectReference>
     <ProjectReference Include="..\KB.Entity\KB.Entity.csproj">
       <Project>{fb079767-3df2-435c-89d3-e15f3d975098}</Project>
       <Name>KB.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KB.Infrastructure\KB.Framework.csproj">
+    <ProjectReference Include="..\KB.Infrastructure\KB.Infrastructure.csproj">
       <Project>{fe79d2df-6b23-4278-9c84-fc1d6487c45b}</Project>
-      <Name>KB.Framework</Name>
+      <Name>KB.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\KB.Repository\KB.Repository.csproj">
       <Project>{4f7dbfec-3a4e-410c-9c32-d092e50aaa7b}</Project>

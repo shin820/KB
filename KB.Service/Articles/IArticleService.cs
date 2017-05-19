@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using KB.Object.Articles;
 using KB.Entity;
 
-namespace KB.BizService.Articles
+namespace KB.DomainService.Articles
 {
     public interface IArticleService
     {

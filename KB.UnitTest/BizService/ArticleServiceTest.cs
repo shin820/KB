@@ -1,4 +1,4 @@
-﻿using KB.BizService.Articles;
+﻿using KB.DomainService.Articles;
 using KB.Entity;
 using KB.Repository.Articles;
 using Moq;

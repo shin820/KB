@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using KB.BizService.Articles;
+using KB.ApplicationService.Dto.Articles;
+using KB.DomainService.Articles;
 using KB.Entity;
-using KB.Object.Articles;
 using System.Linq;
 
-namespace KB.Process.Articles
+namespace KB.ApplicationService.AppServices
 {
-    public class ArticleProcess : IArticleProcess
+    public class ArticleAppService : IArticleAppService
     {
         private IArticleService _articleService;
-        public ArticleProcess(IArticleService articleService)
+        public ArticleAppService(IArticleService articleService)
         {
             _articleService = articleService;
         }

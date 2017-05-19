@@ -1,11 +1,8 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using KB.Object.KB;
-using KB.Entity;
+﻿using KB.Entity;
 using KB.Repository.KnowlegeBases;
 using System.Linq;
 
-namespace KB.BizService.KnowlegeBases
+namespace KB.DomainService.KnowlegeBases
 {
     public class KnowlegeBaseService : IKnowlegeBaseService
     {
