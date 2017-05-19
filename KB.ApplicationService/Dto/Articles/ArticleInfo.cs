@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KB.ApplicationService.Dto.Articles
+namespace KB.Application.Dto.Articles
 {
     public class ArticleInfo
     {

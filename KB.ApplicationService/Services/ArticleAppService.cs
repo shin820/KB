@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using KB.ApplicationService.Dto.Articles;
-using KB.DomainService.Services;
-using KB.Entity;
+using KB.Application.Dto.Articles;
+using KB.Domain.Entities;
+using KB.Domain.Services;
 using System.Linq;
 
-namespace KB.ApplicationService.AppServices
+namespace KB.Application.Services
 {
     public class ArticleAppService : IArticleAppService
     {

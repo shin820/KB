@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KB.ApplicationService.Dto.KB
+namespace KB.Application.Dto.KB
 {
     public class KnowlegeBaseInfo
     {

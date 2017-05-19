@@ -1,7 +1,7 @@
-﻿using KB.ApplicationService.Dto.Articles;
+﻿using KB.Application.Dto.Articles;
 using System.Linq;
 
-namespace KB.ApplicationService.AppServices
+namespace KB.Application.Services
 {
     public interface IArticleAppService
     {

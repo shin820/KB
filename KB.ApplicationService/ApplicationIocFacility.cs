@@ -1,20 +1,20 @@
 ﻿using Castle.MicroKernel.Facilities;
 using Castle.MicroKernel.Registration;
-using KB.DomainService;
+using KB.Domain;
 
-namespace KB.ApplicationService
+namespace KB.Application
 {
-    public class AppServiceIocFacility : AbstractFacility
+    public class ApplicationIocFacility : AbstractFacility
     {
         protected override void Init()
         {
             Kernel.Register(
-            Classes.FromAssemblyNamed("KB.ApplicationService").Pick().If(t => t.Name.EndsWith("AppService"))
+            Classes.FromAssemblyNamed("KB.Application").Pick().If(t => t.Name.EndsWith("AppService"))
                     .Configure(configurer => configurer.Named(configurer.Implementation.Name))
                     .WithService.DefaultInterfaces().LifestylePerWebRequest()
             );
 
-            DomainServiceIocInitializer.Init(Kernel);
+            DomainIocInitializer.Init(Kernel);
         }
     }
 }

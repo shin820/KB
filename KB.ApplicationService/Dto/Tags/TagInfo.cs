@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KB.ApplicationService.Dto.Tags
+namespace KB.Application.Dto.Tags
 {
     public class TagInfo
     {

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using KB.Entity;
+using KB.Domain.Entities;
 
-namespace KB.DomainService.Services
+namespace KB.Domain.Services
 {
     public interface ITagService
     {

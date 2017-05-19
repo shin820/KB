@@ -1,10 +1,11 @@
-﻿using KB.DomainService.Services;
-using KB.Entity;
-using KB.Repository.Repositories;
+﻿using KB.Application.Services;
+using KB.Domain.Repositories;
+using KB.Domain.Entities;
 using Moq;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using KB.Domain.Services;
 
 namespace KB.UnitTest.DomainServices
 {

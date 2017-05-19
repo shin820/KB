@@ -1,7 +1,7 @@
-﻿using KB.ApplicationService.Dto.KB;
+﻿using KB.Application.Dto.KB;
 using System.Linq;
 
-namespace KB.ApplicationService.AppServices
+namespace KB.Application.Services
 {
     public interface IKnowlegeBaseAppService
     {

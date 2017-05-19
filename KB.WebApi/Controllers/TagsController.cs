@@ -1,5 +1,5 @@
-﻿using KB.ApplicationService.AppServices;
-using KB.ApplicationService.Dto.Tags;
+﻿using KB.Application.Services;
+using KB.Application.Dto.Tags;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;

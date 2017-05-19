@@ -1,7 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using KB.ApplicationService;
+using KB.Application;
 
 namespace KB.WebApi.Core
 {
@@ -9,7 +9,7 @@ namespace KB.WebApi.Core
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.AddFacility<AppServiceIocFacility>();
+            container.AddFacility<ApplicationIocFacility>();
         }
     }
 }

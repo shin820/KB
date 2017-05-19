@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using KB.ApplicationService.Dto.Articles;
-using KB.ApplicationService.Dto.KB;
-using KB.ApplicationService.Dto.Tags;
-using KB.Entity;
+using KB.Application.Dto.Articles;
+using KB.Application.Dto.KB;
+using KB.Application.Dto.Tags;
+using KB.Domain.Entities;
 
-namespace KB.ApplicationService
+namespace KB.Application
 {
     public class DtoMappings : Profile
     {

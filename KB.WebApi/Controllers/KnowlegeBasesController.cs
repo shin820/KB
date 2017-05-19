@@ -1,5 +1,5 @@
-﻿using KB.ApplicationService.AppServices;
-using KB.ApplicationService.Dto.KB;
+﻿using KB.Application.Services;
+using KB.Application.Dto.KB;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;

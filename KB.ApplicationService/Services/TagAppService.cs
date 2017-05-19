@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using KB.ApplicationService.Dto.Tags;
-using KB.DomainService.Services;
-using KB.Entity;
+using KB.Application.Dto.Tags;
+using KB.Domain.Services;
+using KB.Domain.Entities;
 using System.Linq;
 
-namespace KB.ApplicationService.AppServices
+namespace KB.Application.Services
 {
     public class TagAppService : ITagAppService
     {

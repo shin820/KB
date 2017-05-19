@@ -82,10 +82,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KB.Entity\KB.Entity.csproj">
-      <Project>{fb079767-3df2-435c-89d3-e15f3d975098}</Project>
-      <Name>KB.Entity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\KB.Infrastructure\KB.Infrastructure.csproj">
       <Project>{fe79d2df-6b23-4278-9c84-fc1d6487c45b}</Project>
       <Name>KB.Infrastructure</Name>

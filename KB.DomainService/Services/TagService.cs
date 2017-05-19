@@ -1,9 +1,9 @@
-﻿using KB.Entity;
-using KB.Repository.Repositories;
+﻿using KB.Domain.Entities;
+using KB.Domain.Repositories;
 using System;
 using System.Linq;
 
-namespace KB.DomainService.Services
+namespace KB.Domain.Services
 {
     public class TagService : ITagService
     {

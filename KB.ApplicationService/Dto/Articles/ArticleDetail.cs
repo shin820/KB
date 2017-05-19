@@ -1,7 +1,7 @@
-﻿using KB.ApplicationService.Dto.Tags;
+﻿using KB.Application.Dto.Tags;
 using System.Collections.Generic;
 
-namespace KB.ApplicationService.Dto.Articles
+namespace KB.Application.Dto.Articles
 {
     public class ArticleDetail
     {
