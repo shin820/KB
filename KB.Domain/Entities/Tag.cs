@@ -19,12 +19,9 @@ namespace KB.Domain.Entities
 
         public string Name { get; set; }
 
-        public IList<Article> Articles
+        public IList<Article> GetArticles()
         {
-            get
-            {
-                return this.ArticleTags.Select(t => t.Article).ToList();
-            }
+            return this.ArticleTags.Select(t => t.Article).ToList();
         }
 
         public virtual KnowledgeBase KnowledgeBase { get; set; }

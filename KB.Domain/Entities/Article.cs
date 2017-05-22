@@ -38,17 +38,12 @@ namespace KB.Domain.Entities
 
         public int? Index { get; set; }
 
-        protected internal virtual IList<ArticleTag> ArticleTags { get; set; }
-
-        public IList<Tag> Tags
-        {
-            get
-            {
-                return ArticleTags.Select(t => t.Tag).ToList();
-            }
-        }
-
         public virtual KnowledgeBase KnowledgeBase { get; set; }
+
+        public IList<Tag> GetTags()
+        {
+            return ArticleTags.Select(t => t.Tag).ToList();
+        }
 
         public void AddTag(int tagId)
         {
@@ -71,5 +66,7 @@ namespace KB.Domain.Entities
                 this.ArticleTags.Remove(tag);
             }
         }
+
+        protected internal virtual IList<ArticleTag> ArticleTags { get; set; }
     }
 }
