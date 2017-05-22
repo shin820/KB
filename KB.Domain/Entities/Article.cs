@@ -8,7 +8,6 @@ namespace KB.Domain.Entities
     {
         public Article()
         {
-            ArticleTags = new List<ArticleTag>();
         }
 
         public int Id { get; private set; }
@@ -39,7 +38,15 @@ namespace KB.Domain.Entities
 
         public int? Index { get; set; }
 
-        public virtual IList<ArticleTag> ArticleTags { get; set; }
+        protected internal virtual IList<ArticleTag> ArticleTags { get; set; }
+
+        public IList<Tag> Tags
+        {
+            get
+            {
+                return ArticleTags.Select(t => t.Tag).ToList();
+            }
+        }
 
         public virtual KnowledgeBase KnowledgeBase { get; set; }
 
