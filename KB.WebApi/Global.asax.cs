@@ -9,6 +9,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.SessionState;
 
 namespace KB.WebApi
 {
@@ -45,5 +46,17 @@ namespace KB.WebApi
                 log.Error(raisedException.Message, raisedException);
             }
         }
+
+        //public override void Init()
+        //{
+        //    this.PostAuthenticateRequest += WebApiApplication_PostAuthenticateRequest;
+        //    base.Init();
+        //}
+
+        //void WebApiApplication_PostAuthenticateRequest(object sender, EventArgs e)
+        //{
+        //    HttpContext.Current.SetSessionStateBehavior(
+        //        SessionStateBehavior.Required);
+        //}
     }
 }
