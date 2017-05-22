@@ -21,13 +21,13 @@ namespace KB.Domain.Entities
 
         public bool IfFeatured { get; set; }
 
-        public DateTime CreatedTime { get; set; }
+        public DateTime CreatedTime { get; protected internal set; }
 
-        public int CreatedBy { get; set; }
+        public int CreatedBy { get; protected internal set; }
 
-        public int? ModifiedBy { get; set; }
+        public int? ModifiedBy { get; protected internal set; }
 
-        public DateTime? ModifiedTime { get; set; }
+        public DateTime? ModifiedTime { get; protected internal set; }
 
         public short Status { get; private set; }
 

@@ -2,8 +2,8 @@
 {
     public abstract class KBEntity
     {
-        public int SiteId { get; set; }
+        public int SiteId { get; protected internal set; }
 
-        public int KBId { get; set; }
+        public int KBId { get; protected internal set; }
     }
 }

@@ -29,7 +29,7 @@ namespace KB.Domain.Entities
 
         public int? SystemId { get; set; }
 
-        public int SiteId { get; set; }
+        public int SiteId { get; protected internal set; }
 
         public string Name { get; set; }
 
