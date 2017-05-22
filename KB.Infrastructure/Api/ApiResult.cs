@@ -24,10 +24,9 @@ namespace KB.Infrastructure.Api
             IsSuccess = isSuccess;
         }
 
-        public ApiResult(ErrorInfo error, bool isUnAuthorized = false)
+        public ApiResult(ErrorInfo error)
         {
             Error = error;
-            IsUnAuthorized = isUnAuthorized;
             IsSuccess = false;
         }
     }
@@ -37,7 +36,6 @@ namespace KB.Infrastructure.Api
     {
         public TData Data { get; set; }
         public bool IsSuccess { get; set; }
-        public bool IsUnAuthorized { get; set; }
         public ErrorInfo Error { get; set; }
 
         public ApiResult()
@@ -56,10 +54,9 @@ namespace KB.Infrastructure.Api
             IsSuccess = isSuccess;
         }
 
-        public ApiResult(ErrorInfo error, bool isUnAuthorized = false)
+        public ApiResult(ErrorInfo error)
         {
             Error = error;
-            IsUnAuthorized = isUnAuthorized;
             IsSuccess = false;
         }
     }

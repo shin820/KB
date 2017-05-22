@@ -239,6 +239,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\KnowlegeBasesController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Core\ApiAuthorizeAttribute.cs" />
     <Compile Include="Core\CastleDependencyResolver.cs" />
     <Compile Include="Core\CastleDependencyScope.cs" />

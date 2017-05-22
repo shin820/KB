@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web;
 using System.Web.Http;
 
@@ -16,6 +17,7 @@ namespace KB.WebApi.Controllers
             var test = HttpContext.Current.Session["test"];
             if (test == null)
             {
+                HttpContext.Current.Session["test"] = "test";
                 return new string[] {};
             }
             else
@@ -31,9 +33,10 @@ namespace KB.WebApi.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public string Post([FromBody]string value)
         {
-            HttpContext.Current.Session["test"] = value;
+            HttpContext.Current.Session["test"] = "aaaaa";
+            return HttpContext.Current.Session["test"].ToString();
         }
 
         // PUT api/values/5

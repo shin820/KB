@@ -47,16 +47,16 @@ namespace KB.WebApi
             }
         }
 
-        //public override void Init()
-        //{
-        //    this.PostAuthenticateRequest += WebApiApplication_PostAuthenticateRequest;
-        //    base.Init();
-        //}
+        public override void Init()
+        {
+            this.PostAuthenticateRequest += WebApiApplication_PostAuthenticateRequest;
+            base.Init();
+        }
 
-        //void WebApiApplication_PostAuthenticateRequest(object sender, EventArgs e)
-        //{
-        //    HttpContext.Current.SetSessionStateBehavior(
-        //        SessionStateBehavior.Required);
-        //}
+        void WebApiApplication_PostAuthenticateRequest(object sender, EventArgs e)
+        {
+            HttpContext.Current.SetSessionStateBehavior(
+                SessionStateBehavior.Required);
+        }
     }
 }
