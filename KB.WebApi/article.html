@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>{{Title}}</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="header short">
+        <div class="container">
+            <div class="logo-img"><img src="/resources/your_logo.png" /></div>
+            <div class="search-input">
+                <input type="text" class="searchBox" placeholder="Enter your question..." autocomplete="off" />
+                <i class="iconfont icon-search"></i>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="home-directory">
+                {{Breadcrumbs}}
+            </div>
+            <div class="title">
+                {{Title}}
+            </div>
+            <div class="article-content">
+                {{Body}}
+            </div>
+            {{# IfAllowFeedback}}
+            <div class="article-feedback">
+                <span>Helpful?</span>
+                <a class="feedback-icon iconfont icon-helpful selected" title="Helpful"></a>
+                <a class="feedback-icon iconfont icon-not-helpful disabled" title="Not helpful"></a>
+                <div class="feedback-label"><span class="feedback-count">{{HelfulPercent}}</span>% of people found this helpful</div>
+            </div>
+            {{/ IfAllowFeedback}}
+        </div>
+    </div>
+    <ul>
+        {{#Items}}
+        <li>{{Name}}</li>
+        {{#/Items}}
+    </ul>
+    <span>
+        {{#Comp}}
+        {{#Child}}
+        {{Name}}
+        {{/Child}}
+        {{/Comp}}
+    </span>
+</body>
+</html>
