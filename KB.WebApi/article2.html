@@ -40,12 +40,17 @@
         <li>{{Name}}</li>
         {{/each}}
     </ul>
+    <ul>
+        {{#list Items 5}}
+        <li>{{Name}}</li>
+        {{/list}}
+    </ul>
     <span>
         {{Comp.Child.Name}}
     </span>
 
-    <div>
-        {{#CustomTag 'This is a custom tag.'}}
-    </div>
 </body>
+<script type="text/javascript">
+    alert("test");
+</script>
 </html>
