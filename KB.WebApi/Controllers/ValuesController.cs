@@ -1,6 +1,7 @@
 ﻿using Mustache;
 using Nustache.Core;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -86,6 +87,7 @@ namespace KB.WebApi.Controllers
                 var data = Template.Create();
 
                 FormatCompiler compiler = new FormatCompiler();
+                compiler.RegisterTag(new DefaultTagDefinition(), true);
                 Generator generator = compiler.Compile(strTemp);
                 string result = generator.Render(data);
 
@@ -94,6 +96,24 @@ namespace KB.WebApi.Controllers
                 response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
 
                 return response;
+            }
+        }
+
+        private sealed class DefaultTagDefinition : InlineTagDefinition
+        {
+            public DefaultTagDefinition()
+                : base("CustomTag")
+            {
+            }
+
+            protected override IEnumerable<TagParameter> GetParameters()
+            {
+                return new TagParameter[] { new TagParameter("param") { IsRequired = false, DefaultValue = 123 } };
+            }
+
+            public override void GetText(TextWriter writer, Dictionary<string, object> arguments, Scope contextScope)
+            {
+                writer.Write(string.Format("<h4 color='red'>Custom Tag :{0}</h4>", arguments["param"]));
             }
         }
 
