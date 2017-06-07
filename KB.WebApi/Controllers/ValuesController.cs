@@ -1,4 +1,5 @@
-﻿using Mustache;
+﻿using HandlebarsDotNet;
+using Mustache;
 using Nustache.Core;
 using System;
 using System.Collections;
@@ -87,7 +88,7 @@ namespace KB.WebApi.Controllers
                 var data = Template.Create();
 
                 FormatCompiler compiler = new FormatCompiler();
-                compiler.RegisterTag(new ListTagDefinition(), true);
+                compiler.RegisterTag(new ListTagDefinition<Item>(), true);
                 Generator generator = compiler.Compile(strTemp);
                 string result = generator.Render(data);
 
@@ -99,7 +100,38 @@ namespace KB.WebApi.Controllers
             }
         }
 
-        public class ListTagDefinition : ContentTagDefinition
+        [Route("handlebars")]
+        public HttpResponseMessage GetHandlebarsPage()
+        {
+            string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "article2.html");
+
+            using (StreamReader reader = new StreamReader(templatePath))
+            {
+                string strTemp = reader.ReadToEnd();
+
+                var data = Template.Create();
+                Handlebars.RegisterHelper("#list", (writer, context, parameters) =>
+                {
+                    var items = parameters[0] as IList<Item>;
+                    var limit = int.Parse(parameters[1].ToString());
+                    items = items.Take(5).ToList();
+                    foreach (var item in items)
+                    {
+                        writer.WriteSafeString("<li>" + item.Name + "</li>");
+                    }
+                });
+                var template = Handlebars.Compile(strTemp);
+                string result = template(data);
+
+                var response = new HttpResponseMessage();
+                response.Content = new StringContent(result);
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
+
+                return response;
+            }
+        }
+
+        public class ListTagDefinition<T> : ContentTagDefinition
         {
             private const string collectionParameter = "collection";
             private static readonly TagParameter collection = new TagParameter(collectionParameter) { IsRequired = true };
@@ -145,19 +177,17 @@ namespace KB.WebApi.Controllers
             {
                 object value = arguments[collectionParameter];
                 int limit = int.Parse(arguments["limit"].ToString());
-                IList enumerable = value as IList;
+                IList<T> enumerable = value as IList<T>;
                 if (enumerable == null)
                 {
                     yield break;
                 }
+
+                enumerable = enumerable.Take(limit).ToList();
+
                 int index = 0;
                 foreach (object item in enumerable)
                 {
-                    if (index == limit)
-                    {
-                        continue;
-                    }
-
                     NestedContext childContext = new NestedContext()
                     {
                         KeyScope = keyScope.CreateChildScope(item),
@@ -177,7 +207,7 @@ namespace KB.WebApi.Controllers
             /// <returns>The parameters that are used to create a new child context.</returns>
             public override IEnumerable<TagParameter> GetChildContextParameters()
             {
-                return new TagParameter[] { collection };
+                return new TagParameter[] { collection, limit };
             }
         }
 
