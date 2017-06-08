@@ -1,4 +1,5 @@
-﻿using HandlebarsDotNet;
+﻿using DotLiquid;
+using HandlebarsDotNet;
 using Mustache;
 using Nustache.Core;
 using System;
@@ -65,7 +66,7 @@ namespace KB.WebApi.Controllers
             {
                 string strTemp = reader.ReadToEnd();
 
-                var data = Template.Create();
+                var data = TemplateData.Create();
                 string result = Render.StringToString(strTemp, data);
 
                 var response = new HttpResponseMessage();
@@ -85,7 +86,7 @@ namespace KB.WebApi.Controllers
             {
                 string strTemp = reader.ReadToEnd();
 
-                var data = Template.Create();
+                var data = TemplateData.Create();
 
                 FormatCompiler compiler = new FormatCompiler();
                 compiler.RegisterTag(new ListTagDefinition<Item>(), true);
@@ -109,7 +110,7 @@ namespace KB.WebApi.Controllers
             {
                 string strTemp = reader.ReadToEnd();
 
-                var data = Template.Create();
+                var data = TemplateData.Create();
                 Handlebars.RegisterHelper("#list", (writer, context, parameters) =>
                 {
                     var items = parameters[0] as IList<Item>;
@@ -122,6 +123,28 @@ namespace KB.WebApi.Controllers
                 });
                 var template = Handlebars.Compile(strTemp);
                 string result = template(data);
+
+                var response = new HttpResponseMessage();
+                response.Content = new StringContent(result);
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
+
+                return response;
+            }
+        }
+
+        [Route("liquid")]
+        public HttpResponseMessage GetliquidPage()
+        {
+            string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "article3.html");
+
+            using (StreamReader reader = new StreamReader(templatePath))
+            {
+                string strTemp = reader.ReadToEnd();
+
+                var data = TemplateData.Create();
+
+                DotLiquid.Template template = DotLiquid.Template.Parse(strTemp);  // Parses and compiles the template
+                string result = template.Render(Hash.FromAnonymousObject(data)); // Renders the output
 
                 var response = new HttpResponseMessage();
                 response.Content = new StringContent(result);
@@ -211,7 +234,7 @@ namespace KB.WebApi.Controllers
             }
         }
 
-        public class Template
+        public class TemplateData : Drop
         {
             public string Title { get; set; }
             public string Breadcrumbs { get; set; }
@@ -221,9 +244,9 @@ namespace KB.WebApi.Controllers
             public List<Item> Items { get; set; }
             public Complex Comp { get; set; }
 
-            public static Template Create()
+            public static TemplateData Create()
             {
-                return new Template
+                return new TemplateData
                 {
                     Title = "Test mustache",
                     Breadcrumbs = "Test",
@@ -250,16 +273,16 @@ namespace KB.WebApi.Controllers
             }
         }
 
-        public class Item
+        public class Item : Drop
         {
             public string Name { get; set; }
         }
 
-        public class Complex
+        public class Complex : Drop
         {
             public Child Child { get; set; }
         }
-        public class Child
+        public class Child : Drop
         {
             public string Name { get; set; }
         }
