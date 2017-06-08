@@ -25,20 +25,20 @@
             <div class="article-content">
                 {{Body}}
             </div>
-            {{# IfAllowFeedback}}
+            {{#IfAllowFeedback}}
             <div class="article-feedback">
                 <span>Helpful?</span>
                 <a class="feedback-icon iconfont icon-helpful selected" title="Helpful"></a>
                 <a class="feedback-icon iconfont icon-not-helpful disabled" title="Not helpful"></a>
                 <div class="feedback-label"><span class="feedback-count">{{HelfulPercent}}</span>% of people found this helpful</div>
             </div>
-            {{/ IfAllowFeedback}}
+            {{/IfAllowFeedback}}
         </div>
     </div>
     <ul>
         {{#Items}}
         <li>{{Name}}</li>
-        {{#/Items}}
+        {{/Items}}
     </ul>
     <span>
         {{#Comp}}

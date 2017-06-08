@@ -103,7 +103,7 @@ namespace KB.WebApi.Controllers
         [Route("handlebars")]
         public HttpResponseMessage GetHandlebarsPage()
         {
-            string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "article2.html");
+            string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "article.html");
 
             using (StreamReader reader = new StreamReader(templatePath))
             {
