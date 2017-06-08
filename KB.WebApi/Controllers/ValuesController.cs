@@ -1,4 +1,5 @@
 ﻿using DotLiquid;
+using DynamicExpresso;
 using HandlebarsDotNet;
 using Mustache;
 using Nustache.Core;
@@ -179,6 +180,23 @@ namespace KB.WebApi.Controllers
                 }
 
                 if (result)
+                {
+                    options.Template(writer, context);
+                }
+                else
+                {
+                    options.Inverse(writer, context);
+                }
+            });
+
+            Handlebars.RegisterHelper("xif", (writer, options, context, parameters) =>
+            {
+                string expression = parameters[0].ToString();
+
+                var interpreter = new Interpreter().SetVariable("x", context);
+                var isTrue = interpreter.Eval<bool>(expression);
+
+                if (isTrue)
                 {
                     options.Template(writer, context);
                 }

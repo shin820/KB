@@ -56,6 +56,11 @@
                 <span>Breadcrumbs !=  'Test'</span>
                 {{/Compare}}
             </p>
+            <p>
+                {{xif 'x.Breadcrumbs=="Test"&&x.Comp.Child.Name=="Test Complex Type"&&x.Items.Count==10'}}
+                <h3>test xif success!</h3>
+                {{/xif}}
+            </p>
         </div>
     </div>
 </body>
