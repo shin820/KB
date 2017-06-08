@@ -111,16 +111,7 @@ namespace KB.WebApi.Controllers
                 string strTemp = reader.ReadToEnd();
 
                 var data = TemplateData.Create();
-                Handlebars.RegisterHelper("#list", (writer, context, parameters) =>
-                {
-                    var items = parameters[0] as IList<Item>;
-                    var limit = int.Parse(parameters[1].ToString());
-                    items = items.Take(5).ToList();
-                    foreach (var item in items)
-                    {
-                        writer.WriteSafeString("<li>" + item.Name + "</li>");
-                    }
-                });
+                RegisterHelpers();
                 var template = Handlebars.Compile(strTemp);
                 string result = template(data);
 
@@ -130,6 +121,72 @@ namespace KB.WebApi.Controllers
 
                 return response;
             }
+        }
+
+        private void RegisterHelpers()
+        {
+            Handlebars.RegisterHelper("#list", (writer, context, parameters) =>
+            {
+                var items = parameters[0] as IList<Item>;
+                var limit = int.Parse(parameters[1].ToString());
+                items = items.Take(5).ToList();
+                foreach (var item in items)
+                {
+                    writer.WriteSafeString("<li>" + item.Name + "</li>");
+                }
+            });
+
+            Handlebars.RegisterHelper("Compare", (writer, options, context, parameters) =>
+            {
+                if (parameters.Count() < 3)
+                {
+                    throw new InvalidOperationException("Handlerbars Helper 'Compare' needs 3 parameters");
+                }
+
+                string oprt = parameters[1].ToString();
+                bool result = false;
+                if (oprt == "==")
+                {
+                    result = parameters[0] == parameters[2];
+                }
+                if (oprt == "!=")
+                {
+                    result = parameters[0] != parameters[2];
+                }
+                if (oprt == ">")
+                {
+                    result = decimal.Parse(parameters[0].ToString()) > decimal.Parse(parameters[2].ToString());
+                }
+                if (oprt == "<")
+                {
+                    result = decimal.Parse(parameters[0].ToString()) < decimal.Parse(parameters[2].ToString());
+                }
+                if (oprt == ">=")
+                {
+                    result = decimal.Parse(parameters[0].ToString()) >= decimal.Parse(parameters[2].ToString());
+                }
+                if (oprt == "<=")
+                {
+                    result = decimal.Parse(parameters[0].ToString()) <= decimal.Parse(parameters[2].ToString());
+                }
+                if (oprt == "&&")
+                {
+                    result = bool.Parse(parameters[0].ToString()) && bool.Parse(parameters[2].ToString());
+                }
+                if (oprt == "||")
+                {
+                    result = bool.Parse(parameters[0].ToString()) || bool.Parse(parameters[2].ToString());
+                }
+
+                if (result)
+                {
+                    options.Template(writer, context);
+                }
+                else
+                {
+                    options.Inverse(writer, context);
+                }
+            });
         }
 
         [Route("liquid")]

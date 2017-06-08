@@ -38,14 +38,24 @@
                 <li>{{Name}}</li>
                 {{/each}}
             </ul>
-            <ul>
-                {{#list Items 5}}
-                <li>{{Name}}</li>
-                {{/list}}
-            </ul>
             <span>
                 {{Comp.Child.Name}}
             </span>
+            <p>
+                {{Compare 2 '>' 1}}
+                <span>2 > 1</span>
+                {{/Compare}}
+            </p>
+            <p>
+                {{Compare IfAllowFeedback '&&' IfAllowFeedback}}
+                <span>IfAllowFeedback '&&' 1</span>
+                {{/Compare}}
+            </p>
+            <p>
+                {{Compare Breadcrumbs '==' 'Test111'}}
+                <span>Breadcrumbs !=  'Test'</span>
+                {{/Compare}}
+            </p>
         </div>
     </div>
 </body>
