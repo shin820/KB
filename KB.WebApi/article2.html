@@ -33,21 +33,20 @@
                 <div class="feedback-label"><span class="feedback-count">{{HelfulPercent}}</span>% of people found this helpful</div>
             </div>
             {{/if }}
+            <ul>
+                {{#each Items}}
+                <li>{{Name}}</li>
+                {{/each}}
+            </ul>
+            <ul>
+                {{#list Items 5}}
+                <li>{{Name}}</li>
+                {{/list}}
+            </ul>
+            <span>
+                {{Comp.Child.Name}}
+            </span>
         </div>
     </div>
-    <ul>
-        {{#each Items}}
-        <li>{{Name}}</li>
-        {{/each}}
-    </ul>
-    <ul>
-        {{#list Items 5}}
-        <li>{{Name}}</li>
-        {{/list}}
-    </ul>
-    <span>
-        {{Comp.Child.Name}}
-    </span>
-
 </body>
 </html>

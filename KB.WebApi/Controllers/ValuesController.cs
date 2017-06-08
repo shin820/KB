@@ -227,7 +227,7 @@ namespace KB.WebApi.Controllers
                 {
                     Title = "Test mustache",
                     Breadcrumbs = "Test",
-                    Body = "Thisi is a test for mustche",
+                    Body = "Thisi is a test for mustche， <script>alert('abc')</script>",
                     IfAllowFeedback = true,
                     HelfulPercent = 58,
                     Items = new List<Item> {
