@@ -37,9 +37,9 @@
 
             <h5>variable</h5>
             {% assign num = 100 %}
-            {% if Comp.Child.Name == 'Test Complex Type' %}
+            {% if Comp.Child.Name == "Test Complex Type" and IfAllowFeedback == true and num == 100 %}
             <span>
-                <b>{{Comp.Child.Name}}</b>
+                <b>{{num}}</b>
             </span>
             {% endif %}
 
