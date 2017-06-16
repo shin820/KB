@@ -6,7 +6,7 @@ using System.Transactions;
 
 namespace KB.Domain.DomainServices
 {
-    public class ArticleService : IArticleService
+    public class ArticleService : IArticleService, IDomainService
     {
         private IArticleRepository _articleRepository;
         private ITagRepository _tagRepository;

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace KB.Domain.DomainServices
 {
-    public class TagService : ITagService
+    public class TagService : ITagService, IDomainService
     {
         private ITagRepository _repository;
         public TagService(ITagRepository repository)

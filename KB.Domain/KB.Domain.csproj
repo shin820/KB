@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContextFactory.cs" />
+    <Compile Include="DomainServices\IDomainService.cs" />
     <Compile Include="Entities\Article.cs" />
     <Compile Include="Entities\ArticleTag.cs" />
     <Compile Include="Entities\Category.cs" />

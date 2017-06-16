@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace KB.Domain.DomainServices
 {
-    public class KnowlegeBaseService : IKnowlegeBaseService
+    public class KnowlegeBaseService : IKnowlegeBaseService, IDomainService
     {
         private IKnowlegeBaseRepository _repository;
         public KnowlegeBaseService(

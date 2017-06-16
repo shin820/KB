@@ -1,5 +1,7 @@
 ﻿using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
+using KB.Domain.DomainServices;
+using KB.Domain.Repositories;
 using System.Data.Entity;
 
 namespace KB.Domain
@@ -9,23 +11,21 @@ namespace KB.Domain
         public static void Init(IKernel kernel)
         {
             kernel.Register(
-                Classes.FromAssemblyNamed("KB.Domain")
-                        .Pick()
-                        .If(t => t.Name.EndsWith("Service"))
+
+                Classes.FromAssemblyContaining<IDomainService>()
+                        .BasedOn<IDomainService>()
                         .Configure(configurer => configurer.Named(configurer.Implementation.Name))
-                        .WithService
-                        .DefaultInterfaces()
+                        .WithServiceAllInterfaces()
                         .LifestylePerWebRequest(),
 
                 Component.For(typeof(DbContext))
                         .UsingFactoryMethod(k => { return DbContextFactory.Create(k); })
                         .LifestylePerWebRequest(),
-                Classes.FromAssemblyNamed("KB.Domain")
-                       .Pick()
-                       .If(t => t.Name.EndsWith("Repository"))
+
+                Classes.FromAssemblyContaining(typeof(IRepositoryBase<>))
+                       .BasedOn(typeof(RepositoryBase<>))
                        .Configure(configurer => configurer.Named(configurer.Implementation.Name))
-                       .WithService
-                       .DefaultInterfaces()
+                       .WithServiceAllInterfaces()
                        .LifestylePerWebRequest()
             );
         }
